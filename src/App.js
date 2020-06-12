@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { BrowserRouter, Route } from 'react-router-dom';
-import Login from './component/Login';
+import Login from './component/profile/Login';
 import Home from './component/Home';
 import NavBar from './component/NavBar';
-import SingUp from './component/SingUp';
+import SingUp from './component/profile/SingUp';
 import { loadSaga } from './redux/actioncreators/actionsSaga';
 import './App.css';
 
