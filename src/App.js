@@ -8,6 +8,7 @@ import SingUp from './component/profile/SingUp';
 import { loadSaga } from './redux/actioncreators/actionsSaga';
 import './App.css';
 import MainPage from './components2/MainPage';
+import Footer from './component/Footer';
 
 function App() {
   const store = useSelector((state) => state);
@@ -43,6 +44,7 @@ function App() {
         <Route exact path='/'>
           <Home />
         <MainPage />
+          <Footer />
         </Route>
         <Route path='/login'>
           <Login />
