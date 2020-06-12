@@ -7,6 +7,7 @@ import NavBar from './component/NavBar';
 import SingUp from './component/profile/SingUp';
 import { loadSaga } from './redux/actioncreators/actionsSaga';
 import './App.css';
+import MainPage from './components2/MainPage';
 
 function App() {
   const store = useSelector((state) => state);
@@ -41,6 +42,7 @@ function App() {
         <NavBar user={store.user} />
         <Route exact path='/'>
           <Home />
+        <MainPage />
         </Route>
         <Route path='/login'>
           <Login />
