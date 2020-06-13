@@ -9,6 +9,8 @@ import { loadSaga } from './redux/actioncreators/actionsSaga';
 import './App.css';
 import MainPage from './components2/MainPage';
 import Footer from './component/Footer';
+import Recipes from './component/recipes/Recipes';
+import Logo from './components2/Logo';
 
 function App() {
   const store = useSelector((state) => state);
@@ -51,6 +53,11 @@ function App() {
         </Route>
         <Route path='/singup'>
           <SingUp />
+        </Route>
+        <Route path='/recipes'>
+          <Logo />
+          <Recipes />
+          <Footer />
         </Route>
       </BrowserRouter>
     </>

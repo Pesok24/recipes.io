@@ -2,8 +2,11 @@ import React from 'react';
 import logo from '../images/logo.png'
 
 const Logo = () => {
-  return ( 
+  
+  return (
+    <div className="MainPage">
     <img src={logo} alt="" className='MainImg'/>
+    </div> 
    );
 }
  

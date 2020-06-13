@@ -13,6 +13,21 @@ export default function Home() {
   if (session === 'false') {
     history.push('/login');
   }
+
+  const doFetch = async () => {
+    const responce = await fetch('http://yeap.fun:4000/recipe/all', {
+      method: 'GET',
+      mode: 'no-cors',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
+    const result = await responce.json()
+    console.log(result);
+    
+  }
+  doFetch()
+
   return (
     <>
       <div></div>
