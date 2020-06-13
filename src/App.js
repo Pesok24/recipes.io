@@ -7,7 +7,7 @@ import NavBar from './component/NavBar';
 import SingUp from './component/profile/SingUp';
 import { loadSaga } from './redux/actioncreators/actionsSaga';
 import './App.css';
-import MainPage from './components2/MainPage';
+import MainPage from './component/MainPage';
 import Footer from './component/Footer';
 
 function App() {
