@@ -14,5 +14,6 @@ export default function Home() {
   if (session === 'false') {
     history.push('/login');
   }
+
   return '';
 }

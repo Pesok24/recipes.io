@@ -43,6 +43,33 @@
   color: white;
 }
 
+
+#recipesImg {
+  width: fit-content;
+}
+
+#recipesMain {
+  display: flex;
+  /* flex-direction: column; */
+  width: auto;
+  border: 2px solid rgb(194, 211, 202);
+  border-radius: 10px;
+  width: 50%;
+}
+
+#reviewsList {
+  width: 59%;
+}
+
+#ingredients {
+  width: 32%;
+}
+
+#recipesContainer {
+  display: flex;
+  justify-content: center;
+}
+  
 .carouselRandom-main {
   margin-top: 30px;
   padding: 10px;

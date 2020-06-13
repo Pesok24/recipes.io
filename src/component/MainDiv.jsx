@@ -1,5 +1,4 @@
 import React from 'react';
-import pasta from '../images/pasta.png';
 import carouselLoader from '../utils/random-caorusel';
 
 const MainDiv = () => {
