@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { NavDropdown } from 'react-bootstrap';
 
 export default function NavBar(props) {
-  const store = useSelector((state) => state);
+  const store = useSelector((state) => state.user);
   const dispatch = useDispatch();
   return (
     <nav className='navbar navbar-expand-lg navbar-light bg-light navbar navbar-dark bg-dark'>
@@ -19,9 +19,9 @@ export default function NavBar(props) {
       </div>
       <div className='d-flex justify-content-end'>
         <ul className='navbar-nav mr-auto'>
-          {store.user ? (
-            <NavDropdown title={store.user.name} id='basic-nav-dropdown'>
-              <NavDropdown.Item href='/user'>Profile</NavDropdown.Item>
+          {store.name ? (
+            <NavDropdown title={store.name} id='basic-nav-dropdown'>
+              <NavDropdown.Item href='/profile'>Profile</NavDropdown.Item>
 
               <NavDropdown.Divider />
               <NavDropdown.Item

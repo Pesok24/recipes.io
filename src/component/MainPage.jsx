@@ -5,6 +5,13 @@ import CaruselRandom from './carousels/random';
 import Logo from './Logo';
 
 const MainPage = () => {
+  async function fetchio() {
+    const response = await fetch('/recipe/all');
+    console.log(response.json());
+  }
+
+  fetchio();
+
   return (
     <>
       <div className='container'>

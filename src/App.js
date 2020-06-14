@@ -11,6 +11,7 @@ import MainPage from './component/MainPage';
 import Footer from './component/Footer';
 import Recipes from './component/recipes/Recipes';
 import Logo from './component/Logo';
+import Profile from './component/profile/profile';
 
 function App() {
   const store = useSelector((state) => state);
@@ -45,7 +46,7 @@ function App() {
         <NavBar user={store.user} />
         <Route exact path='/'>
           <Home />
-        <MainPage />
+          <MainPage />
           <Footer />
         </Route>
         <Route path='/login'>
@@ -53,6 +54,9 @@ function App() {
         </Route>
         <Route path='/singup'>
           <SingUp />
+        </Route>
+        <Route path='/profile'>
+          <Profile />
         </Route>
         <Route path='/recipes'>
           <Logo />

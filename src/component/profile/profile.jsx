@@ -9,10 +9,9 @@ function Profile() {
     <>
       <div>
         <div className='userImage'>
-          <img src={user.image} alt='Фото профиля' />
+          <img alt='Фото профиля' />
         </div>
         <div className='userName'>{user.name}</div>
-        <Status />
       </div>
     </>
   );

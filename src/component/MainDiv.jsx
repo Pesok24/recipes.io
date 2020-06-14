@@ -1,8 +1,21 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import carouselLoader from '../utils/random-caorusel';
 
 const MainDiv = () => {
-  const data = carouselLoader[Math.ceil(Math.random() * carouselLoader.length)];
+  let [data, setData] = useState({ reviews: [], ingridients: [] });
+  useEffect(() => {
+    async function test(){
+
+      let array = await carouselLoader();
+      console.log(array);
+      
+      setData(array[0]);
+    }
+    test()
+  }, []);
+
+  console.log('>>>>>>',data);
+
   const good = data.reviews.length;
   return (
     <>
@@ -18,7 +31,7 @@ const MainDiv = () => {
             </h3>
             {data.recipe}
             <br />
-            <span class="likes">🙂 {good}</span>
+            <span class='likes'>🙂 {good}</span>
           </p>
         </div>
       </div>

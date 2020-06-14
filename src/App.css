@@ -13,6 +13,7 @@
 }
 
 .mainDiv {
+  font-family: 'Jost', sans-serif;
   background-color: #fff;
   border-radius: 10px;
   margin-top: 20px;
@@ -24,10 +25,13 @@
 }
 
 #MainInput {
-  width: 42%;
-  background-color: #c4c4c4;
-  border-radius: 10px;
+  font-family: 'Jost', sans-serif;
+  font-size: 16px;
+  width: 40%;
+  background-color: #ffffff;
+  border-radius: 2px;
   border: none;
+  padding: 3px;
 }
 
 #footerDiv {
@@ -42,7 +46,6 @@
 #footerDiv p {
   color: white;
 }
-
 
 #recipesImg {
   width: fit-content;
@@ -69,7 +72,7 @@
   display: flex;
   justify-content: center;
 }
-  
+
 .carouselRandom-main {
   margin-top: 30px;
   padding: 10px;
