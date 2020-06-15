@@ -7,6 +7,7 @@ const defaultState = {
   isLoading: null,
 
   mainrecipe: { reviews: [], ingridients: [] },
+  reviews: ['gregerg']
 };
 
 async function logOut() {
@@ -48,6 +49,12 @@ const reducer = (state = defaultState, action) => {
         ...state,
         mainrecipe: data,
       };
+
+      case 'REVIEWS':
+        return {
+          ...state,
+          reviews: action.reviews
+        }
 
     case 'LOGOUT':
       logOut();
