@@ -10,8 +10,10 @@ const MainDiv = () => {
     }
     test();
   }, []);
+
   const data = useSelector((state) => state.mainrecipe);
   console.log(data);
+
   return (
     <>
       <div>

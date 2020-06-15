@@ -9,3 +9,4 @@ export function loadSaga() {
 export function loadingStart() {
   return { type: actionType.start };
 }
+

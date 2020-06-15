@@ -1,4 +1,5 @@
 import actionType from './actions';
+import doFetch from '../fetchFunc';
 
 const defaultState = {
   statusSession: false,
@@ -8,6 +9,7 @@ const defaultState = {
     image: 'http://interra.tv/static/images/no-ava.png',
   },
   isLoading: null,
+
   mainrecipe: { reviews: [], ingridients: [] },
 };
 
@@ -16,6 +18,12 @@ async function logOut() {
     method: 'POST',
   });
 }
+
+const getFetch = async () => {
+  const resp = await doFetch();
+  // console.log(resp);
+  return resp[0]
+};
 
 const reducer = (state = defaultState, action) => {
   switch (action.type) {
@@ -48,8 +56,10 @@ const reducer = (state = defaultState, action) => {
     case 'LOGOUT':
       logOut();
       localStorage.setItem('session', false);
+
       localStorage.setItem('user.name', '');
       return { ...state, statusSession: false, user: { name: '' } };
+
     default:
       return state;
   }
