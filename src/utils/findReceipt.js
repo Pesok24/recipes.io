@@ -6,8 +6,9 @@ async function findReceipt(value) {
     },
     body: JSON.stringify({ data: value }),
   });
-  console.log(value);
+  console.log(responce);
   const result = await responce.json();
+  console.log(result);
 }
 
 export default findReceipt;
