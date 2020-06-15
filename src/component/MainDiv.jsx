@@ -1,22 +1,18 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import carouselLoader from '../utils/random-caorusel';
 
 const MainDiv = () => {
-  let [data, setData] = useState({ reviews: [], ingridients: [] });
+  //let [data, setData] = useState({ reviews: [], ingridients: [] });
   useEffect(() => {
-    async function test(){
-
-      let array = await carouselLoader();
-      console.log(array);
-      
-      setData(array[0]);
+    async function test() {
+      await carouselLoader();
     }
-    test()
+    test();
   }, []);
 
-  console.log('>>>>>>',data);
-
-  const good = data.reviews.length;
+  const data = useSelector((state) => state.mainrecipe);
+  console.log(data);
 
   return (
     <>
@@ -24,7 +20,6 @@ const MainDiv = () => {
         <h2 class='carouselTitle'>Пользователи выбирают</h2>
         <div className='mainDiv'>
           <img src={data.image} alt={data.title} className='main-page-img' />
-
           <p>
             <h3>
               {data.title}
@@ -32,7 +27,8 @@ const MainDiv = () => {
             </h3>
             {data.recipe}
             <br />
-            <span class='likes'>🙂 {good}</span>
+            <br />
+            <span class='likes'>Понравилось: 🙂 {data.reviews.length}</span>
           </p>
         </div>
       </div>
