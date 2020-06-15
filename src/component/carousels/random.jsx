@@ -1,12 +1,23 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import carouselLoader from '../../utils/random-caorusel';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
 function CaruselRandom() {
-  const data = carouselLoader;
+  const [data, setData] = useState([{ reviews: [], ingridients: [] }]);
+  useEffect(() => {
+    async function test(){
+
+      let array = await carouselLoader();
+      console.log(array);
+      
+      setData(array);
+    }
+    test()
+  }, []);
   console.log(data);
+
   let settings = {
     dots: false,
     infinite: true,

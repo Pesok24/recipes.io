@@ -7,7 +7,7 @@ function Status() {
 
   return (
     <div className='userStatus'>
-      {status} <span class='changeStatus' onClick={() => }>Изменить статус</span>
+      {status} <span class='changeStatus'>Изменить статус</span>
     </div>
   );
 }

@@ -3,7 +3,7 @@ import doFetch from '../fetchFunc';
 
 const defaultState = {
   statusSession: false,
-  user: null,
+  user: { name: '' },
   isLoading: null,
   todos: [],
   recipe: {}
@@ -28,31 +28,23 @@ const reducer = (state = defaultState, action) => {
         ...state,
         isLoading: true,
       };
-    case actionType.todo:
-      const todo = { todo: action.todo };
-      return {
-        ...state,
-        todos: todo.todo,
-        isLoading: false,
-      };
 
     case 'LOGIN':
       const user = { name: action.session.name };
+      console.log(user);
       return {
         ...state,
         statusSession: true,
         user: user,
       };
+
     case 'LOGOUT':
       logOut();
       localStorage.setItem('session', false);
-      localStorage.setItem('user', '');
-      return { ...state, statusSession: false, user: null };
-      case actionType.getRecipe:
-        const newRecipe = getFetch();
-        return {
-          recipe: newRecipe
-        }
+
+      localStorage.setItem('user.name', '');
+      return { ...state, statusSession: false, user: { name: '' } };
+
     default:
       return state;
   }
