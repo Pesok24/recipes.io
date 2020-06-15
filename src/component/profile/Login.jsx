@@ -38,7 +38,7 @@ export default function Login(props) {
   }
 
   return (
-    <div className='container ' id='login'>
+    <div className='container' id='login'>
       <form onSubmit={loginSubmit}>
         <div className='form-group'>
           <label>Email address</label>

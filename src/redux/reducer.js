@@ -2,7 +2,11 @@ import actionType from './actions';
 
 const defaultState = {
   statusSession: false,
-  user: { name: '', id: '', image: 'https://7themes.su/img/no-ava.png' },
+  user: {
+    name: '',
+    id: '',
+    image: 'http://interra.tv/static/images/no-ava.png',
+  },
   isLoading: null,
   mainrecipe: { reviews: [], ingridients: [] },
 };
