@@ -17,7 +17,7 @@ function Profile() {
             <div className="profileInfo__body">
               <img
                 className="profileInfo__img"
-                src="https://lh3.googleusercontent.com/proxy/YgpK7iLkleDYARw35q-kxZBvJAbFPdbqE2qA-eJbgKXX2JyPHsj9dl8WWGMWEKefPdIf5zXsmQMtM9QVzrtTY2gOB1Hkt2Zw_g"
+                src="https://ukrsekta.info/images/rik.jpg"
                 alt="ProfilePic"
               />
               <div className="profileInfo__userInfo">
@@ -26,9 +26,9 @@ function Profile() {
               </div>
             </div>
             <div className="profileInfo__buttons">
-              <button className="profileInfo__button">Изменить имя</button>
-              <button className="profileInfo__button">Изменить аватарку</button>
-              <button className="profileInfo__button">Добавить рецепт</button>
+              <button className="profileInfo__button button">Изменить имя</button>
+              <button className="profileInfo__button button">Изменить аватарку</button>
+              <button className="profileInfo__button button">Добавить рецепт</button>
             </div>
           </div>
           <div className="previousDish">
@@ -40,8 +40,8 @@ function Profile() {
                   <div className="previousDish__title__like">
                     <h4 className="previousDish__title">Какое-то блюдо</h4>
                     <div className="previousDish__buttons">
-                      <button className="previousDish__like"></button>
-                      <button className="previousDish__dislike"></button>
+                      <button className="previousDish__like button">🙂</button>
+                      <button className="previousDish__dislike button">😥</button>
                     </div>
                   </div>
                 </div>
