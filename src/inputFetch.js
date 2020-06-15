@@ -1,6 +1,4 @@
-
-const doFetch = async (id) => {
-
+const inputFetch = async (text) => {
   console.log('1');
   
   // const responce = await fetch("data", {
@@ -9,17 +7,17 @@ const doFetch = async (id) => {
   //     'Content-Type': 'application/json'
   //   },
   // });
-
-  const responce = await fetch("recipe/link", {
+  const responce = await fetch("recipe/review", {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify(id)
-
+      body: JSON.stringify(text)
     });
   const result = await responce.json();
+  console.log(result,'result v func');
+  
   return result;
 };
 
-export default doFetch
+export default inputFetch

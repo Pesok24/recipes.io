@@ -2,39 +2,57 @@ import React from "react";
 import { useState } from "react";
 import { useEffect } from "react";
 import doFetch from "../../fetchFunc";
-import { ListGroup } from 'react-bootstrap' 
+import { ListGroup, Button, Modal } from "react-bootstrap";
+import Example from "./InputModal";
+import { render } from "react-dom";
+import { useDispatch, useSelector } from "react-redux";
 const Reviews = (props) => {
-  const [reviews, setReviews] = useState([]);
-console.log(props);
+  const dispatch = useDispatch()
 
-  // useEffect(() => {
-  //   const getFetch = async () => {
-  //     const resp = await doFetch();
-  //     console.log(resp[0].reviews);
-  //     setReviews(resp[0].reviews);
-  //   };
-  //   getFetch();
-  // }, []);
-  const reviews1 = props.data.data.reviews
-  console.log('>>>>>',reviews1);
+  const reviewSelector = useSelector(state => state.reviews)
+  console.log(reviewSelector);
+  useEffect(() => {
+    const getFetch = async function () {
+      const responce = await fetch("recipe/getrev", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ params: props.params }),
+      });
+      console.log("????????????", responce);
+
+      const result = await responce.json();
+      console.log("....................", result, "result v func");
+
+      dispatch({ type: "REVIEWS", reviews: result.data })
+    };
+    getFetch();
+  }, []);
+
   
+  const reviews1 = props.data.reviews;
+  console.log(">>>>>", reviews1);
+
   return (
     <>
-    <div id='recipesHover'>
-      <ListGroup.Item><b>Отзывы:</b></ListGroup.Item>
-  <div id='reviewsList'>
-    <ListGroup id='reviewListGroup'>
-    {reviews1.map((e) => {
-      console.log(e);
-      return (
-        <ListGroup.Item>{e}</ListGroup.Item>
-        )
-      })}
-    </ListGroup>
+      <div id="recipesHover">
+        <ListGroup.Item>
+          <b>Отзывы:</b>
+        </ListGroup.Item>
+        <div id="reviewsList">
+          <ListGroup id="reviewListGroup">
+            {reviewSelector.map((e) => {
+              console.log(e);
+              return <ListGroup.Item>{e.text}</ListGroup.Item>;
+            })}
+          </ListGroup>
+        </div>
+        <Example params={props.params} />|
       </div>
-  </div>
-  </>
-  )
+    </>
+  );
+
 };
 
 export default Reviews;

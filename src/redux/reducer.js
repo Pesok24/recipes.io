@@ -3,14 +3,14 @@ import doFetch from '../fetchFunc';
 
 const defaultState = {
   statusSession: false,
-  user: {
-    name: '',
-    id: '',
-    image: 'http://interra.tv/static/images/no-ava.png',
-  },
+
+  user: { name: '', id: '', image: 'https://7themes.su/img/no-ava.png', status: 'Ничего не готовит' },
+
   isLoading: null,
 
   mainrecipe: { reviews: [], ingridients: [] },
+  reviews: ['Отзывов нет.']
+
 };
 
 async function logOut() {
@@ -52,6 +52,12 @@ const reducer = (state = defaultState, action) => {
         ...state,
         mainrecipe: data,
       };
+
+      case 'REVIEWS':
+        return {
+          ...state,
+          reviews: action.reviews
+        }
 
     case 'LOGOUT':
       logOut();
