@@ -11,6 +11,7 @@ import MainPage from './component/MainPage';
 import Footer from './component/Footer';
 import Recipes from './component/recipes/Recipes';
 import Logo from './component/Logo';
+import Profile from './component/profilePage/Profile';
 
 function App() {
   const store = useSelector((state) => state);
@@ -57,6 +58,11 @@ function App() {
         <Route path='/recipes'>
           <Logo />
           <Recipes />
+          <Footer />
+        </Route>
+        <Route path='/profile'>
+          <Logo/>
+          <Profile/>
           <Footer />
         </Route>
       </BrowserRouter>
