@@ -11,8 +11,8 @@ import MainPage from './component/MainPage';
 import Footer from './component/Footer';
 import Recipes from './component/recipes/Recipes';
 import Logo from './component/Logo';
-import Profile from './component/profile/profile';
 import Example from './component/recipes/InputModal';
+import Profile from './component/profilePage/Profile';
 
 function App() {
   const store = useSelector((state) => state);
@@ -26,6 +26,7 @@ function App() {
         },
       });
       const result = await response.json();
+      console.log(result);
 
       if (result.session) {
         dispatch({ type: 'LOGIN', session: result.session });
@@ -62,6 +63,11 @@ function App() {
         <Route path='/recipes'>
           <Logo />
           <Recipes />
+          <Footer />
+        </Route>
+        <Route path='/profile'>
+          <Logo/>
+          <Profile/>
           <Footer />
         </Route>
       </BrowserRouter>

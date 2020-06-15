@@ -8,14 +8,13 @@ import { Link } from 'react-router-dom';
 function CaruselRandom() {
   const [data, setData] = useState([{ reviews: [], ingridients: [] }]);
   useEffect(() => {
-    async function test(){
-
+    async function test() {
       let array = await carouselLoader();
       console.log(array);
-      
+
       setData(array);
     }
-    test()
+    test();
   }, []);
   console.log(data);
 
