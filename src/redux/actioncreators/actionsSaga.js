@@ -13,3 +13,7 @@ export function loadingStart() {
 export function loadingTodo(arr) {
   return { type: actionType.todo, todo: arr };
 }
+
+export function fetcher() {
+  return { type: actionType.getRecipe }
+}

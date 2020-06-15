@@ -17,6 +17,7 @@ const MainDiv = () => {
   console.log('>>>>>>',data);
 
   const good = data.reviews.length;
+
   return (
     <>
       <div>
