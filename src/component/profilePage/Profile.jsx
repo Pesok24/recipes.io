@@ -8,7 +8,8 @@ import CaruselRandom from "../carousels/random";
 function Profile() {
   const user = useSelector((state) => state.user);
   const data = carouselLoader[Math.ceil(Math.random() * carouselLoader.length)];
-
+  console.log(user);
+  
   return (
     <>
       <div className="MainPage">
@@ -16,17 +17,17 @@ function Profile() {
           <div className="profileInfo">
             <div className="profileInfo__body">
               <img
+                src={user.img}
                 className="profileInfo__img"
-                src="https://ukrsekta.info/images/rik.jpg"
                 alt="ProfilePic"
               />
               <div className="profileInfo__userInfo">
-                <p>user.name</p>
-                <p>status</p>
+                <p>{user.name}</p>
+                <p><Status/></p>
               </div>
             </div>
             <div className="profileInfo__buttons">
-              <button className="profileInfo__button button">Изменить имя</button>
+              <button className="profileInfo__button button" >Изменить имя</button>
               <button className="profileInfo__button button">Изменить аватарку</button>
               <button className="profileInfo__button button">Добавить рецепт</button>
             </div>
@@ -36,7 +37,7 @@ function Profile() {
             <div className="previousDish__body">
               <div className="previousDish__reviewBlock">
                 <div className="previousDish__preview">
-                  <img className="previousDish__img" src={data.image} />
+                  <img className="previousDish__img"  />
                   <div className="previousDish__title__like">
                     <h4 className="previousDish__title">Какое-то блюдо</h4>
                     <div className="previousDish__buttons">

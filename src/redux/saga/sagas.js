@@ -7,9 +7,9 @@ import actionType from '../actions';
 
 function* loadTodo() {
   try {
-    // yield put(fetcher());
+
     yield put(loadingStart());
-   // const result = yield call(fetchTodo);
+
   } catch (error) {
     console.log(error);
   }
