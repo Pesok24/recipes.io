@@ -7,39 +7,43 @@ import TitleRecipes from './TitleRecipes';
 import { useDispatch, useSelector } from 'react-redux';
 import actions from '../../redux/actions'
 import { loadSaga } from '../../redux/actioncreators/actionsSaga';
+import { useLocation } from 'react-router-dom';
 
 const Recipes = () => {
-  const [data, setData] = useState({reviews:[], ingridients:[], recipe: ''})
-
+  const [data, setData] = useState({reviews:[], ingridients:[], recipe: '', title: ''})
+  const location = useLocation()
+  console.log('Локация>>>>>',location);
+  
+  
   useEffect(() => {
     console.log('2');
     
     const getFetch = async () => {
-      const resp = await doFetch();
+      const resp = await doFetch({id: location.params});
       console.log('>>>>>>>',resp);
-      setData(resp[0]);
+      setData(resp);
     };
     getFetch();
   }, []);
 
 
-console.log(data); 
-let some = data.reviews;
-console.log(some)
+// console.log(data); 
+// let some = data.reviews;
+// console.log(some)
 
 
   
-  const reviews = data.reviews
+  // const reviews = data.reviews
 
   return (
     <div id='recipesContainer'>
     <div id="recipesMain">
-    {/* <>
-    <div id='recipesImg'>
+    {/* <> */}
+    {/* <div id='recipesImg'>
       <h3>{data.title}</h3>
       <img src={data.image} alt=""/></div>
     </> */}
-    <TitleRecipes data={data} />
+    <TitleRecipes data={data} params={location.params} />
     </div>
     </div>
    );

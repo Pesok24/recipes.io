@@ -12,6 +12,7 @@ import Footer from './component/Footer';
 import Recipes from './component/recipes/Recipes';
 import Logo from './component/Logo';
 import Profile from './component/profile/profile';
+import Example from './component/recipes/InputModal';
 
 function App() {
   const store = useSelector((state) => state);

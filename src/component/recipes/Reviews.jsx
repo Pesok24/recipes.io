@@ -2,7 +2,9 @@ import React from "react";
 import { useState } from "react";
 import { useEffect } from "react";
 import doFetch from "../../fetchFunc";
-import { ListGroup } from 'react-bootstrap' 
+import { ListGroup, Button, Modal } from 'react-bootstrap'
+import Example from "./InputModal";
+import { render } from "react-dom";
 const Reviews = (props) => {
   const [reviews, setReviews] = useState([]);
 console.log(props);
@@ -15,7 +17,7 @@ console.log(props);
   //   };
   //   getFetch();
   // }, []);
-  const reviews1 = props.data.data.reviews
+  const reviews1 = props.data.reviews
   console.log('>>>>>',reviews1);
   
   return (
@@ -32,6 +34,7 @@ console.log(props);
       })}
     </ListGroup>
       </div>
+      <Example params={props.params} />|
   </div>
   </>
   )
