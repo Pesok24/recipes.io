@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import Status from "../profile/Status";
 import carouselLoader from "../../utils/random-caorusel";
 import "./Profile.css";
+import CaruselRandom from "../carousels/random";
 
 function Profile() {
   const user = useSelector((state) => state.user);
@@ -36,13 +37,30 @@ function Profile() {
               <div className="previousDish__reviewBlock">
                 <div className="previousDish__preview">
                   <img className="previousDish__img" src={data.image} />
+                  <div className="previousDish__title__like">
+                    <h4 className="previousDish__title">Какое-то блюдо</h4>
+                    <div className="previousDish__buttons">
+                      <button className="previousDish__like"></button>
+                      <button className="previousDish__dislike"></button>
+                    </div>
+                  </div>
                 </div>
                 <div className="previousDish_review">
-                  <textarea/>
+                  <textarea />
                 </div>
               </div>
-              <div className="previousDish__list"></div>
+              <div className="previousDish__history"></div>
+              <ul>
+                <li>🙂 Курица в ананасах</li>
+                <li>🙂 Курица в ананасах</li>
+                <li>🙂 Курица в ананасах</li>
+                <li>🙂 Курица в ананасах</li>
+                <li>🙂 Курица в ананасах</li>
+              </ul>
             </div>
+          </div>
+          <div className="youdlike">
+            <CaruselRandom/>
           </div>
         </div>
       </div>
