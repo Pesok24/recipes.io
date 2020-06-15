@@ -9,7 +9,3 @@ export function loadSaga() {
 export function loadingStart() {
   return { type: actionType.start };
 }
-
-export function loadingTodo(arr) {
-  return { type: actionType.todo, todo: arr };
-}

@@ -138,3 +138,9 @@
   color: grey;
   float: right;
 }
+
+.tags {
+  position: relative;
+  width: 100%;
+  top: 100px;
+}

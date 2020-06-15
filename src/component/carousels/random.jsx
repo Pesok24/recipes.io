@@ -7,14 +7,13 @@ import 'slick-carousel/slick/slick-theme.css';
 function CaruselRandom() {
   const [data, setData] = useState([{ reviews: [], ingridients: [] }]);
   useEffect(() => {
-    async function test(){
-
+    async function test() {
       let array = await carouselLoader();
       console.log(array);
-      
+
       setData(array);
     }
-    test()
+    test();
   }, []);
   console.log(data);
 

@@ -2,9 +2,9 @@ import actionType from './actions';
 
 const defaultState = {
   statusSession: false,
-  user: { name: '' },
+  user: { name: '', id: '', image: 'https://7themes.su/img/no-ava.png' },
   isLoading: null,
-  todos: [],
+  mainrecipe: { reviews: [], ingridients: [] },
 };
 
 async function logOut() {
@@ -22,12 +22,23 @@ const reducer = (state = defaultState, action) => {
       };
 
     case 'LOGIN':
-      const user = { name: action.session.name };
-      console.log(user);
+      const user = {
+        name: action.session.name,
+        id: action.session._id,
+        img: action.session.image,
+      };
+
       return {
         ...state,
         statusSession: true,
         user: user,
+      };
+
+    case 'MAINRECIPE':
+      const data = action.mainrecipe;
+      return {
+        ...state,
+        mainrecipe: data,
       };
 
     case 'LOGOUT':
