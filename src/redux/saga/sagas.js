@@ -1,5 +1,5 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
-import { loadingStart, loadingTodo } from '../actioncreators/actionsSaga';
+import { loadingStart, loadingTodo, fetcher } from '../actioncreators/actionsSaga';
 import actionType from '../actions';
 const fetchTodo = async () => {
   return await (
@@ -14,6 +14,7 @@ const fetchTodo = async () => {
 
 function* loadTodo() {
   try {
+    yield put(fetcher());
     yield put(loadingStart());
     const result = yield call(fetchTodo);
     yield put(loadingTodo(result.todo));

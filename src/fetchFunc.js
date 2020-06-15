@@ -1,11 +1,18 @@
 const doFetch = async () => {
+  console.log('1');
+  
+  // const responce = await fetch("data", {
+  //   method: 'POST',
+  //   headers: {
+  //     'Content-Type': 'application/json'
+  //   },
+  // });
   const responce = await fetch("recipe/all", {
-    method: "GET",
-    mode: "no-cors",
-    headers: {
-      "Content-Type": "application/json",
-    },
-  });
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+    });
   const result = await responce.json();
   return result;
 };

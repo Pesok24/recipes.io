@@ -1,10 +1,12 @@
 import actionType from './actions';
+import doFetch from '../fetchFunc';
 
 const defaultState = {
   statusSession: false,
   user: null,
   isLoading: null,
   todos: [],
+  recipe: {}
 };
 
 async function logOut() {
@@ -12,6 +14,12 @@ async function logOut() {
     method: 'POST',
   });
 }
+
+const getFetch = async () => {
+  const resp = await doFetch();
+  // console.log(resp);
+  return resp[0]
+};
 
 const reducer = (state = defaultState, action) => {
   switch (action.type) {
@@ -40,6 +48,11 @@ const reducer = (state = defaultState, action) => {
       localStorage.setItem('session', false);
       localStorage.setItem('user', '');
       return { ...state, statusSession: false, user: null };
+      case actionType.getRecipe:
+        const newRecipe = getFetch();
+        return {
+          recipe: newRecipe
+        }
     default:
       return state;
   }

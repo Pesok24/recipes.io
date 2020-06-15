@@ -4,6 +4,7 @@ import carouselLoader from '../utils/random-caorusel';
 const MainDiv = () => {
   const data = carouselLoader[Math.ceil(Math.random() * carouselLoader.length)];
   const good = data.reviews.length;
+
   return (
     <>
       <div>
