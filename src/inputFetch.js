@@ -15,6 +15,8 @@ const inputFetch = async (text) => {
       body: JSON.stringify(text)
     });
   const result = await responce.json();
+  console.log(result,'result v func');
+  
   return result;
 };
 
