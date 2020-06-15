@@ -26,9 +26,9 @@ function Profile() {
               </div>
             </div>
             <div className="profileInfo__buttons">
-              <div className="profileInfo__button">Изменить имя</div>
-              <div className="profileInfo__button">Изменить аватарку</div>
-              <div className="profileInfo__button">Добавить рецепт</div>
+              <button className="profileInfo__button">Изменить имя</button>
+              <button className="profileInfo__button">Изменить аватарку</button>
+              <button className="profileInfo__button">Добавить рецепт</button>
             </div>
           </div>
           <div className="previousDish">
