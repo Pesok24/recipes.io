@@ -26,9 +26,7 @@ function Status() {
 
   return (
     <div className='userStatus'>
-      <p>Сейчас готовит:</p>
-      <p>{status}</p>  
-      <button class='changeStatus' onClick={() =>{} }>Изменить статус</button>
+      <p>Сейчас готовит: {status}</p>
     </div>
   );
 }
