@@ -3,25 +3,29 @@ import doFetch from '../../fetchFunc';
 import { useEffect } from 'react';
 import { ListGroup } from 'react-bootstrap';
 
-const Ingredients = () => {
+const Ingredients = (props) => {
 
-  const [ingerd, setIngerd] = useState([])
+  // const [ingerd, setIngerd] = useState([])
 
-  useEffect(() => {
-    const getFetch = async () => {
-      const resp = await doFetch();
-      console.log(resp[0].ingridients);
-      setIngerd(resp[0].ingridients);
-    };
-    getFetch();
-  }, []);
+  // useEffect(() => {
+  //   const getFetch = async () => {
+  //     const resp = await doFetch();
+  //     console.log(resp[0].ingridients);
+  //     setIngerd(resp[0].ingridients);
+  //   };
+  //   getFetch();
+  // }, []);
+
+  const ingerd = props.data.data.ingridients
+  console.log('++++++++++++++',ingerd);
+  
+  let i = 0
 
   return ( 
     <div id='ingredients'>
       <ListGroup>
         <ListGroup.Item><b>Вам понадобится:</b></ListGroup.Item>
       {ingerd.map((e) => {
-        let i = '0'
         i++
         return (
         <ListGroup.Item>{i}. {e}</ListGroup.Item>
