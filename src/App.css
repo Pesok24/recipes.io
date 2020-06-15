@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap');
+
+
 .container {
   width: 80%;
   margin: auto;
@@ -82,6 +85,7 @@
 
 #recipesMain h3 {
   margin-top: 7%;
+  /* font-family: 'Oswald', sans-serif; */
 }
 
 .list-group-item {
@@ -92,10 +96,10 @@
   display: block;
 }
 
-/* .list-group {
-  height: 155px;
-  width: 470%;
-} */
+#ingredients .list-group {
+  width: 371%;
+  text-align: center;
+}
 
 #reviewListGroup {
   height: 155px;
@@ -103,9 +107,9 @@
 }
 
 #ingredients {
-  width: 300%;
-  margin-top: 9%;
-  margin-left: 35%;
+  /* width: 300%; */
+  /* margin-top: 9%;
+  margin-left: 35%; */
 }
 
 .recipeListDiv {
@@ -114,10 +118,18 @@
   width: 100%;
 }
 
-#recipeList {
+/* #recipeList {
   position: relative;
   bottom: 137%;
-}
+} */
+
+/* .col {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  } */
+
+
 
 #recipesContainer {
   display: flex;

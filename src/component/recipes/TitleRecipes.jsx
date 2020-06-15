@@ -25,29 +25,40 @@ const TitleRecipes = (props) => {
 
 
   return ( 
-    <>
-  <Container>
+        <>
+        <Container>
   <Row>
     <Col><h3>{props.data.title}</h3></Col>
-    {/* <Col></Col> */}
-    {/* <Col><img src={props.data.image} alt=""/></Col> */}
-    <Col xs={6} md={4}>
-      <Image src={props.data.image} width='400px' height='300px' rounded />
-    </Col>
+    <Col><Image src={props.data.image} width='400px' height='300px' rounded /></Col>
   </Row>
   <Row>
-    <Col><Reviews data={props} /></Col>
+    <Col><Recipe data={props} /></Col>
     <Col><Ingredients data={props}/></Col>
   </Row>
-    <Col><Recipe data={props} /></Col>
 </Container>
-    </>
-   );
+        </>
+);
 }
- 
-    // <div id='recipesImg'>
-    //   <h3>{props.data.title}</h3>
-    //   <img src={props.data.image} alt=""/>
-    // <Reviews data={props} />
-    // </div>
+
+// <div id='recipesImg'>
+//   <h3>{props.data.title}</h3>
+//   <img src={props.data.image} alt=""/>
+// <Reviews data={props} />
+// </div>
 export default TitleRecipes;
+
+//   <Container>
+//   <Row>
+//     <Col><h3>{props.data.title}</h3></Col>
+//     {/* <Col></Col> */}
+//     {/* <Col><img src={props.data.image} alt=""/></Col> */}
+//     <Col xs={6} md={4}>
+//       <Image src={props.data.image} width='400px' height='300px' rounded />
+//     </Col>
+//   </Row>
+//   <Row>
+//     <Col><Reviews data={props} /></Col>
+//     <Col><Ingredients data={props}/></Col>
+//   </Row>
+//     <Col><Recipe data={props} /></Col>
+// </Container>
