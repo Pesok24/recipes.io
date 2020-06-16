@@ -1,15 +1,11 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { TagInput } from 'reactjs-tag-input';
+import Superinput from './Superinput';
 
 function Input() {
   const [text, setText] = useState('');
-  const [tags, setTags] = useState([]);
+  const [showInput, setShowInput] = useState(false);
   const dispatch = useDispatch();
-
-  function onTagsChanged(tags) {
-    setTags(tags);
-  }
 
   async function findReceipt(e, text) {
     e.preventDefault();
@@ -25,24 +21,40 @@ function Input() {
     dispatch({ type: 'MAINRECIPE', mainrecipe: result.data[0] });
   }
   console.log(text);
-  return (
-    <>
-       <form onSubmit={(e) => findReceipt(e, text)}>
+  if (!showInput) {
+    return (
+      <>
         <input
           type='text'
           id='MainInput'
           placeholder='Укажите имеющиеся ингридиенты'
-          onChange={(e) => setText(e.target.value)}
+          onClick={(e) => setShowInput(true)}
           required
         />
-        <input type='submit' value='Искать' />
-      </form>
-      <div className='tags'>
-        <TagInput tags={tags} onTagsChanged={onTagsChanged} />
-      </div>
-      <p>и мы подберем подходящие рецепты</p>
-    </>
-  );
+
+        <p>и мы подберем подходящие рецепты</p>
+      </>
+    );
+  } else {
+    return (
+      <>
+        <input
+          type='text'
+          id='MainInput'
+          placeholder='Укажите имеющиеся ингридиенты'
+          onClick={(e) => setShowInput(true)}
+          required
+        />
+
+        <p>и мы подберем подходящие рецепты</p>
+
+        <div className='container-div'>
+      
+          <Superinput />
+        </div>
+      </>
+    );
+  }
 }
 
 export default Input;

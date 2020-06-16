@@ -4,13 +4,17 @@ import doFetch from '../fetchFunc';
 const defaultState = {
   statusSession: false,
 
-  user: { name: '', id: '', image: 'https://7themes.su/img/no-ava.png', status: 'Ничего не готовит' },
+  user: {
+    name: '',
+    id: '',
+    image: 'https://7themes.su/img/no-ava.png',
+    status: 'Ничего не готовит',
+  },
 
   isLoading: null,
 
-  mainrecipe: { reviews: [], ingridients: [] },
-  reviews: ['Отзывов нет.']
-
+  mainrecipe: {},
+  reviews: ['Отзывов нет.'],
 };
 
 async function logOut() {
@@ -22,7 +26,7 @@ async function logOut() {
 const getFetch = async () => {
   const resp = await doFetch();
   // console.log(resp);
-  return resp[0]
+  return resp[0];
 };
 
 const reducer = (state = defaultState, action) => {
@@ -53,11 +57,11 @@ const reducer = (state = defaultState, action) => {
         mainrecipe: data,
       };
 
-      case 'REVIEWS':
-        return {
-          ...state,
-          reviews: action.reviews
-        }
+    case 'REVIEWS':
+      return {
+        ...state,
+        reviews: action.reviews,
+      };
 
     case 'LOGOUT':
       logOut();

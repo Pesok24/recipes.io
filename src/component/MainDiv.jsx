@@ -28,7 +28,9 @@ const MainDiv = () => {
             {data.recipe}
             <br />
             <br />
-            <span class='likes'>Понравилось: 🙂 {data.reviews.length}</span>
+            <span class='likes'>
+              Понравилось: 🙂 {data.reviews ? data.reviews.length : 0}
+            </span>
           </p>
         </div>
       </div>
