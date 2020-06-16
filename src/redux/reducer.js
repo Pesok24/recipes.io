@@ -49,7 +49,10 @@ const reducer = (state = defaultState, action) => {
         ...state,
         mainrecipe: data,
       };
-
+    case 'CHANGE_NAME':
+      return {
+        ...state, user: { ...state.user, name: action.name}
+      }
     case 'LOGOUT':
       logOut();
       localStorage.setItem('session', false);

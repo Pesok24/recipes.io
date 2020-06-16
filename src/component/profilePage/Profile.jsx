@@ -4,12 +4,31 @@ import Status from "../profile/Status";
 import carouselLoader from "../../utils/random-caorusel";
 import "./Profile.css";
 import CaruselRandom from "../carousels/random";
+import InputName from './InputName'
+import { useEffect } from "react";
 
 function Profile() {
   const user = useSelector((state) => state.user);
   const data = carouselLoader[Math.ceil(Math.random() * carouselLoader.length)];
-  console.log(user);
   
+
+  useEffect(() => {
+    // async function changeName() {
+      
+    //   const response = await fetch("recipe/status", {
+    //       method: 'POST',
+    //       headers: {
+    //         'Content-Type': 'application/json'
+    //       }, body: JSON.stringify({id: user.id})
+    //     });
+    //     const result = await response.json();
+        
+    //   setStatus(result.data)
+    //   return result;
+    // }
+    //  status();
+  }, [])
+
   return (
     <>
       <div className="MainPage">
@@ -23,11 +42,11 @@ function Profile() {
               />
               <div className="profileInfo__userInfo">
                 <p>{user.name}</p>
-                <p><Status/></p>
+                <p><Status/>  </p>
               </div>
             </div>
             <div className="profileInfo__buttons">
-              <button className="profileInfo__button button" >Изменить имя</button>
+              <InputName/>
               <button className="profileInfo__button button">Изменить аватарку</button>
               <button className="profileInfo__button button">Добавить рецепт</button>
             </div>
