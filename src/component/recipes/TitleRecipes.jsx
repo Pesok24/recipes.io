@@ -41,6 +41,7 @@ const TitleRecipes = (props) => {
         <Col>
           <Recipe data={props.data} />
         </Col>
+        <Likes />
       </Container>
     </>
   );
