@@ -26,7 +26,9 @@ function Status() {
 
   return (
     <div className='userStatus'>
+
       <p>Сейчас готовит: {status}</p>
+
     </div>
   );
 }

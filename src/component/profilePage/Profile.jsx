@@ -28,6 +28,7 @@ function Profile() {
           <div className="profileInfo">
             <div className="profileInfo__body">
               <img
+
                 src={user.img}
                 className="profileInfo__img"
                 alt="ProfilePic"
