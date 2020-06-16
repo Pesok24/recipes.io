@@ -6,19 +6,26 @@ import { ListGroup, Button, Modal } from "react-bootstrap";
 import Example from "./InputModal";
 import { render } from "react-dom";
 import { useDispatch, useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
+
+
 const Reviews = (props) => {
   const dispatch = useDispatch()
-
+  console.log(props)
   const reviewSelector = useSelector(state => state.reviews)
   console.log(reviewSelector);
+  const allParams = useParams()
+  console.log(allParams,'Все парамсыqqqqqqqqqq');
+
+
   useEffect(() => {
     const getFetch = async function () {
-      const responce = await fetch("recipe/getrev", {
+      const responce = await fetch("http://localhost:3000/recipe/getrev", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ params: props.params }),
+        body: JSON.stringify({ params: allParams.id }),
       });
       console.log("????????????", responce);
 
@@ -43,12 +50,13 @@ const Reviews = (props) => {
         <div id="reviewsList">
           <ListGroup id="reviewListGroup">
             {reviewSelector.map((e) => {
+              let userName = e.author.name
               console.log(e);
-              return <ListGroup.Item>{e.text}</ListGroup.Item>;
+            return <ListGroup.Item><b>{userName}: </b>{e.text}</ListGroup.Item>;
             })}
           </ListGroup>
         </div>
-        <Example params={props.params} />|
+        <Example params={props.params} />
       </div>
     </>
   );

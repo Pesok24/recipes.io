@@ -7,22 +7,21 @@ import TitleRecipes from './TitleRecipes';
 import { useDispatch, useSelector } from 'react-redux';
 import actions from '../../redux/actions'
 import { loadSaga } from '../../redux/actioncreators/actionsSaga';
-
-import { useLocation } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
 
 const Recipes = () => {
   const [data, setData] = useState({reviews:[], ingridients:[], recipe: '', title: ''})
   const location = useLocation()
   console.log('Локация>>>>>',location);
-  
+  const allParams = useParams()
+  console.log(allParams,'Все парамсыqqqqqqqqqq');
   
 
   useEffect(() => {
     console.log('2');
     
     const getFetch = async () => {
-
-      const resp = await doFetch({id: location.params});
+      const resp = await doFetch({id: allParams.id});
       console.log('>>>>>>>',resp);
       setData(resp);
 

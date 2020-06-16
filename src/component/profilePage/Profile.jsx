@@ -4,8 +4,8 @@ import Status from "../profile/Status";
 import carouselLoader from "../../utils/random-caorusel";
 import "./Profile.css";
 import CaruselRandom from "../carousels/random";
-import { Modal, Button} from 'react-bootstrap';
-
+import InputName from './InputName'
+import { useEffect } from "react";
 
 function Profile() {
   const user = useSelector((state) => state.user);
@@ -21,6 +21,7 @@ function Profile() {
     console.log("was clicked");
   };
 
+
   return (
     <>
       <div className="MainPage">
@@ -35,40 +36,13 @@ function Profile() {
               />
               <div className="profileInfo__userInfo">
                 <p>{user.name}</p>
-                <p>
-                  <Status />
-                </p>
+                <p><Status/>  </p>
               </div>
             </div>
             <div className="profileInfo__buttons">
-              <button
-                className="profileInfo__button button"
-                onClick={handleShow}
-              >
-                Изменить имя
-              </button>
-              <Modal show={show} onHide={handleClose}>
-                <Modal.Header closeButton>
-                  <Modal.Title>Modal heading</Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-                  Woohoo, you're reading this text in a modal!
-                </Modal.Body>
-                <Modal.Footer>
-                  <Button variant="secondary" onClick={handleClose}>
-                    Close
-                  </Button>
-                  <Button variant="primary" onClick={handleClose}>
-                    Save Changes
-                  </Button>
-                </Modal.Footer>
-              </Modal>
-              <button className="profileInfo__button button">
-                Изменить аватарку
-              </button>
-              <button className="profileInfo__button button">
-                Добавить рецепт
-              </button>
+              <InputName/>
+              <button className="profileInfo__button button">Изменить аватарку</button>
+              <button className="profileInfo__button button">Добавить рецепт</button>
             </div>
           </div>
           <div className="previousDish">

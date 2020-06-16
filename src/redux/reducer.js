@@ -9,8 +9,7 @@ const defaultState = {
   isLoading: null,
 
   mainrecipe: { reviews: [], ingridients: [] },
-  reviews: ['Отзывов нет.']
-
+  reviews: [{ text: 'dfdwef', author: { name: '' } }]
 };
 
 async function logOut() {
@@ -52,6 +51,12 @@ const reducer = (state = defaultState, action) => {
         ...state,
         mainrecipe: data,
       };
+
+    case 'CHANGE_NAME':
+      return {
+        ...state, user: { ...state.user, name: action.name}
+      }
+
 
       case 'REVIEWS':
         return {
