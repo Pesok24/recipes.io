@@ -7,6 +7,7 @@ import { Container, Row, Col, Image } from "react-bootstrap";
 import Ingredients from "./Ingredients";
 import Recipe from "./RecipeMain";
 import { useLocation } from "react-router-dom";
+import Likes from "./Likes";
 
 const TitleRecipes = (props) => {
   console.log('Здесь локация пропс', props);

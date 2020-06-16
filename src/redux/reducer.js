@@ -7,7 +7,7 @@ const defaultState = {
   isLoading: null,
 
   mainrecipe: { reviews: [], ingridients: [] },
-  reviews: ['gregerg']
+  reviews: [{ text: 'dfdwef', author: { name: '' } }]
 };
 
 async function logOut() {
