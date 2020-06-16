@@ -19,7 +19,9 @@ const Recipe = (props) => {
   <div id='recipeList'>
     <ListGroup>
   <ListGroup.Item><b>Рецепт:</b></ListGroup.Item>
+
   <ListGroup.Item className="recipeListDiv">{props.data.recipe}</ListGroup.Item>
+
     </ListGroup>
   </div>
   )

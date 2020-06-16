@@ -1,6 +1,8 @@
 .container {
   width: 80%;
   margin: auto;
+
+  height: 100%;
 }
 .MainPage {
   display: flex;
@@ -55,9 +57,18 @@
 
 #recipesMain {
   display: flex;
+
+  width: auto;
+  border: 2px solid rgb(194, 211, 202);
+
+  /* flex-di======rection: column; */
+  /* width: auto; */
+  /* border: 2px solid rgb(194, 211, 202); */
+
   /* flex-direction: column; */
   /* width: auto; */
   /* border: 2px solid rgb(194, 211, 202); */
+
   border-radius: 10px;
 }
 

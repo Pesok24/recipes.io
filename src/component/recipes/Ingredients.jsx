@@ -16,7 +16,10 @@ const Ingredients = (props) => {
   //   getFetch();
   // }, []);
 
+
+
   const ingerd = props.data.ingridients
+
   console.log('++++++++++++++',ingerd);
   
   let i = 0

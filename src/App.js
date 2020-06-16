@@ -11,7 +11,9 @@ import MainPage from './component/MainPage';
 import Footer from './component/Footer';
 import Recipes from './component/recipes/Recipes';
 import Logo from './component/Logo';
+
 import Example from './component/recipes/InputModal';
+
 import Profile from './component/profilePage/Profile';
 
 function App() {
@@ -60,7 +62,7 @@ function App() {
         <Route path='/profile'>
           <Profile />
         </Route>
-        <Route path='/recipes'>
+        <Route path='/recipes/:id'>
           <Logo />
           <Recipes />
           <Footer />
