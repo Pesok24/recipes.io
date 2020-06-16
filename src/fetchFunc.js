@@ -1,4 +1,6 @@
+
 const doFetch = async (id) => {
+
   console.log('1');
   
   // const responce = await fetch("data", {
@@ -7,12 +9,13 @@ const doFetch = async (id) => {
   //     'Content-Type': 'application/json'
   //   },
   // });
-  const responce = await fetch("recipe/link", {
+  const responce = await fetch("http://localhost:3000/recipe/link", {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify(id)
+
     });
   const result = await responce.json();
   return result;

@@ -35,7 +35,7 @@ function CaruselRandom() {
         <h2 class='carouselTitle'>Вкусные решения</h2>
         <Slider {...settings}>
           {data.map((item) => (
-            <Link to={{ pathname: '/recipes', params: item._id }}><div className='carouselRandom-element'>
+            <Link to={{ pathname: `/recipes/${item._id}`, params: item._id }}><div className='carouselRandom-element'>
               <div className='carouselRandom-image'>
                 <div className='shadow'>
                   <img

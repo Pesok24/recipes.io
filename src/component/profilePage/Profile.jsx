@@ -10,24 +10,7 @@ import { useEffect } from "react";
 function Profile() {
   const user = useSelector((state) => state.user);
   const data = carouselLoader[Math.ceil(Math.random() * carouselLoader.length)];
-  
 
-  useEffect(() => {
-    // async function changeName() {
-      
-    //   const response = await fetch("recipe/status", {
-    //       method: 'POST',
-    //       headers: {
-    //         'Content-Type': 'application/json'
-    //       }, body: JSON.stringify({id: user.id})
-    //     });
-    //     const result = await response.json();
-        
-    //   setStatus(result.data)
-    //   return result;
-    // }
-    //  status();
-  }, [])
 
   return (
     <>
@@ -36,6 +19,7 @@ function Profile() {
           <div className="profileInfo">
             <div className="profileInfo__body">
               <img
+
                 src={user.img}
                 className="profileInfo__img"
                 alt="ProfilePic"
@@ -56,7 +40,9 @@ function Profile() {
             <div className="previousDish__body">
               <div className="previousDish__reviewBlock">
                 <div className="previousDish__preview">
+
                   <img className="previousDish__img"  />
+
                   <div className="previousDish__title__like">
                     <h4 className="previousDish__title">Какое-то блюдо</h4>
                     <div className="previousDish__buttons">

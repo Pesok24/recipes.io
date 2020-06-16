@@ -2,7 +2,7 @@ import React from 'react';
 import { useState } from 'react';
 import { Button, Modal, Form } from 'react-bootstrap';
 import inputFetch from '../../inputFetch';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
 function Example(props) {
   const [show, setShow] = useState(false);
@@ -10,12 +10,16 @@ function Example(props) {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  const user = useSelector(state => state)
+
+  const user = useSelector(state => state.user)
+  const reviewSelector = useSelector(state => state.reviews)
+  const dispatch = useDispatch()
+
 
   return (
     <>
       <Button variant="primary" onClick={handleShow}>
-        Launch demo modal
+        Оставить отзыв
       </Button>
 
       <Modal show={show} onHide={handleClose}>
@@ -32,9 +36,9 @@ function Example(props) {
             const input = document.getElementById('reviewTextArea')
             console.log(input.value);
             const doFetch = async () => {
-              const responce = await inputFetch({text: input.value, params: props.params})
-              const result = await responce.json()
-              return result
+              const responce = await inputFetch({text: input.value, params: props.params, userId: user.id})
+              console.log('qweqewqwe',responce);
+              dispatch({ type: "REVIEWS", reviews: [...reviewSelector, { text: input.value , author: { name: user.name }} ] })
             }
             doFetch()
           }}>
