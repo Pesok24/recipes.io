@@ -51,4 +51,5 @@ const TitleRecipes = (props) => {
 //   <img src={props.data.image} alt=""/>
 // <Reviews data={props} />
 // </div>
+
 export default TitleRecipes;

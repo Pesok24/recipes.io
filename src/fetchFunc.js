@@ -1,4 +1,6 @@
+
 const doFetch = async (id) => {
+
   console.log('1');
   
   // const responce = await fetch("data", {
@@ -13,6 +15,7 @@ const doFetch = async (id) => {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify(id)
+
     });
   const result = await responce.json();
   return result;

@@ -24,28 +24,21 @@ const Recipes = () => {
       const resp = await doFetch({id: allParams.id});
       console.log('>>>>>>>',resp);
       setData(resp);
+
     };
     getFetch();
   }, []);
 
 
-// console.log(data); 
-// let some = data.reviews;
-// console.log(some)
 
-
-  
-  // const reviews = data.reviews
 
   return (
     <div id='recipesContainer'>
     <div id="recipesMain">
-    {/* <> */}
-    {/* <div id='recipesImg'>
-      <h3>{data.title}</h3>
-      <img src={data.image} alt=""/></div>
-    </> */}
+
+
     <TitleRecipes data={data} params={location.params} />
+
     </div>
     </div>
    );
