@@ -52,6 +52,12 @@ const reducer = (state = defaultState, action) => {
         mainrecipe: data,
       };
 
+    case 'CHANGE_NAME':
+      return {
+        ...state, user: { ...state.user, name: action.name}
+      }
+
+
       case 'REVIEWS':
         return {
           ...state,

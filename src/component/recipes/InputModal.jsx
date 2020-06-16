@@ -10,10 +10,11 @@ function Example(props) {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
+
   const user = useSelector(state => state.user)
   const reviewSelector = useSelector(state => state.reviews)
   const dispatch = useDispatch()
-console.log(user, "Стэйт");
+
 
   return (
     <>
@@ -23,7 +24,7 @@ console.log(user, "Стэйт");
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Напишите свой отзыв:</Modal.Title>
+          <Modal.Title>Что готовите?</Modal.Title>
         </Modal.Header>
         <Modal.Body><Form.Control as="textarea" rows="3" id='reviewTextArea' /></Modal.Body>
         <Modal.Footer>

@@ -4,10 +4,13 @@ import Status from "../profile/Status";
 import carouselLoader from "../../utils/random-caorusel";
 import "./Profile.css";
 import CaruselRandom from "../carousels/random";
+import InputName from './InputName'
+import { useEffect } from "react";
 
 function Profile() {
   const user = useSelector((state) => state.user);
   const data = carouselLoader[Math.ceil(Math.random() * carouselLoader.length)];
+
 
   return (
     <>
@@ -23,12 +26,11 @@ function Profile() {
               />
               <div className="profileInfo__userInfo">
                 <p>{user.name}</p>
-                <p><Status/></p>
+                <p><Status/>  </p>
               </div>
             </div>
             <div className="profileInfo__buttons">
-              <button className="profileInfo__button button" >Изменить имя</button>
-
+              <InputName/>
               <button className="profileInfo__button button">Изменить аватарку</button>
               <button className="profileInfo__button button">Добавить рецепт</button>
             </div>
