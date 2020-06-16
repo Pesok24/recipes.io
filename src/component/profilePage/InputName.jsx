@@ -54,3 +54,7 @@ function InputStatus(props) {
         </Modal.Footer>
       </Modal>
     </>
+  );
+}
+
+export default InputStatus

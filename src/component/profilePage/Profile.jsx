@@ -5,7 +5,7 @@ import carouselLoader from "../../utils/random-caorusel";
 import "./Profile.css";
 import CaruselRandom from "../carousels/random";
 import InputName from './InputName'
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 
 function Profile() {
   const user = useSelector((state) => state.user);
