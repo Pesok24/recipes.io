@@ -11,6 +11,26 @@ function InputStatus(props) {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
+  const handleChangeName = () => {
+
+    dispatch({type: 'CHANGE_NAME', name: name })
+    handleClose()
+    
+    const doFetch = async () => {
+      const response = await fetch("recipe/changeName", {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ name: name, id: user.id })
+      });
+      const result = await response.json()
+      return result
+    }
+    doFetch()
+  
+  }
+
   const user = useSelector(state => state.user)
 
   return (
@@ -28,23 +48,7 @@ function InputStatus(props) {
           <Button variant="secondary" onClick={handleClose}>
             Закрыть
           </Button>
-          <Button variant="primary" onClick={() => {
-            dispatch({type: 'CHANGE_NAME', name: name })
-            handleClose()
-            
-            const doFetch = async () => {
-              const response = await fetch("recipe/changeName", {
-                method: 'POST',
-                headers: {
-                  'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ name: name, id: user.id })
-              });
-              const result = await response.json()
-              return result
-            }
-            // doFetch()
-          }}>
+          <Button variant="primary" onClick={handleChangeName}>
             Отправить
           </Button>
         </Modal.Footer>
