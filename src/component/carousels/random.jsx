@@ -10,8 +10,6 @@ function CaruselRandom() {
   useEffect(() => {
     async function test() {
       let array = await carouselLoader();
-      console.log(array);
-
       setData(array);
     }
     test();
@@ -25,7 +23,6 @@ function CaruselRandom() {
     slidesToShow: 4,
     slidesToScroll: 3,
     arrows: true,
-    lazyLoaded: 'progressive',
   };
   
 
