@@ -4,10 +4,23 @@ import Status from "../profile/Status";
 import carouselLoader from "../../utils/random-caorusel";
 import "./Profile.css";
 import CaruselRandom from "../carousels/random";
+import InputName from './InputName'
+import { useState, useEffect } from "react";
 
 function Profile() {
   const user = useSelector((state) => state.user);
   const data = carouselLoader[Math.ceil(Math.random() * carouselLoader.length)];
+  console.log(user);
+
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
+  const changeNameHandler = () => {
+    console.log("was clicked");
+  };
+
 
   return (
     <>
@@ -23,12 +36,11 @@ function Profile() {
               />
               <div className="profileInfo__userInfo">
                 <p>{user.name}</p>
-                <p><Status/></p>
+                <p><Status/>  </p>
               </div>
             </div>
             <div className="profileInfo__buttons">
-              <button className="profileInfo__button button" >Изменить имя</button>
-
+              <InputName/>
               <button className="profileInfo__button button">Изменить аватарку</button>
               <button className="profileInfo__button button">Добавить рецепт</button>
             </div>
@@ -38,14 +50,14 @@ function Profile() {
             <div className="previousDish__body">
               <div className="previousDish__reviewBlock">
                 <div className="previousDish__preview">
-
-                  <img className="previousDish__img"  />
-
+                  <img className="previousDish__img" />
                   <div className="previousDish__title__like">
                     <h4 className="previousDish__title">Какое-то блюдо</h4>
                     <div className="previousDish__buttons">
                       <button className="previousDish__like button">🙂</button>
-                      <button className="previousDish__dislike button">😥</button>
+                      <button className="previousDish__dislike button">
+                        😥
+                      </button>
                     </div>
                   </div>
                 </div>
@@ -64,7 +76,7 @@ function Profile() {
             </div>
           </div>
           <div className="youdlike">
-            <CaruselRandom/>
+            <CaruselRandom />
           </div>
         </div>
       </div>

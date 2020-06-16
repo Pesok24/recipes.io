@@ -7,7 +7,7 @@ const inputFetch = async (text) => {
   //     'Content-Type': 'application/json'
   //   },
   // });
-  const responce = await fetch("recipe/review", {
+  const responce = await fetch("http://localhost:3000/recipe/review", {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
