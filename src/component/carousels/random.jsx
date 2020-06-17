@@ -14,7 +14,6 @@ function CaruselRandom() {
     }
     test();
   }, []);
-  console.log(data);
 
   let settings = {
     dots: false,
@@ -31,9 +30,11 @@ function CaruselRandom() {
       <div class='carouselRandom-main'>
         <h2 class='carouselTitle'>Вкусные решения</h2>
         <Slider {...settings}>
-          {data.map((item) => (
-            <Link to={{ pathname: `/recipes/${item._id}`, params: item._id }}><div className='carouselRandom-element'>
-              <div className='carouselRandom-image'>
+          {data.map((item) =>  {
+            const itemId  = item._id ? item._id : 'error'
+            return (
+            <Link  to={{ pathname: `/recipes/${itemId}`, params: itemId }}><div className='carouselRandom-element'>
+              <div  className='carouselRandom-image'>
                 <div className='shadow'>
                   <img
                     className='carousel-img'
@@ -45,7 +46,8 @@ function CaruselRandom() {
               <div className='carousel-title'>{item.title}</div>
             </div>
             </Link>
-          ))}
+          )
+})}
         </Slider>
       </div>
     </>

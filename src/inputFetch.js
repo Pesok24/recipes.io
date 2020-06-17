@@ -1,5 +1,4 @@
 const inputFetch = async (text) => {
-  console.log('1');
   
   // const responce = await fetch("data", {
   //   method: 'POST',
@@ -15,7 +14,6 @@ const inputFetch = async (text) => {
       body: JSON.stringify(text)
     });
   const result = await responce.json();
-  console.log(result,'result v func');
   
   return result;
 };
