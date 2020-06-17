@@ -204,4 +204,20 @@ router.post(('/tostatus', async (req, res)=>{
   const status = await User.findOne()
 }))
 
+// router.post(('/updatePhoto', async (req, res)=>{
+//   // let data = req.body;
+//   console.log('l');
+//   // const user = await User.findOneAndUpdate({ _id: data.id }, { image: data.src })
+//   res.json('h')
+// }))
+router.post('/updatePhoto', async(req, res) => {
+  let data = req.body;
+  console.log(typeof req.body.src);
+  await User.findOneAndUpdate({ _id: req.session.user._id }, { image: data.src })
+  const g = await User.findById({_id: req.session.user._id})
+  req.session.user = g
+  console.log(g)
+  res.json({ asd: 'красава'})
+})
+
 module.exports = router;
