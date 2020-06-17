@@ -6,6 +6,7 @@ import "./Profile.css";
 import CaruselRandom from "../carousels/random";
 import InputName from './InputName'
 import { useState, useEffect } from "react";
+import NewRecipe from "./NewRecipe";
 
 function Profile() {
   const user = useSelector((state) => state.user);
@@ -40,7 +41,8 @@ function Profile() {
             <div className="profileInfo__buttons">
               <InputName/>
               <button className="profileInfo__button button">Изменить аватарку</button>
-              <button className="profileInfo__button button">Добавить рецепт</button>
+              {/*<button className="profileInfo__button button">Добавить рецепт</button>*/}
+              <NewRecipe/>
             </div>
           </div>
           <div className="previousDish">
@@ -82,7 +84,7 @@ function Profile() {
         <div className='userImage'>
           <img src={user.image} alt='Фото профиля' />
         </div>
-        
+
       </div> */}
     </>
   );
