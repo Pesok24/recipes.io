@@ -14,6 +14,18 @@ const defaultState = {
   isLoading: null,
 
 
+  //стейе нового рецепта
+
+  // newRecipe: {
+  //   title: '',
+  //   author: '',
+  //   date: '',
+  //   image:'',
+  //   ingridients: data.ingridients, //Array only!
+  //   recipe: data.recipe,
+  // },
+
+
   mainrecipe: { reviews: [], ingridients: [] },
   reviews: [{ text: 'dfdwef', author: { name: '' } }]
 
