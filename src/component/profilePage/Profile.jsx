@@ -7,6 +7,8 @@ import CaruselRandom from "../carousels/random";
 import InputName from './InputName'
 import { useState, useEffect } from "react";
 import PhotoModal from "../profile/PhotoModal";
+import NewRecipe from "./NewRecipe";
+
 
 function Profile() {
   const user = useSelector((state) => state.user);
@@ -41,7 +43,8 @@ function Profile() {
             <div className="profileInfo__buttons">
               <InputName/>
               <PhotoModal />
-              <button className="profileInfo__button button">Добавить рецепт</button>
+              <NewRecipe/>
+
             </div>
           </div>
           <div className="previousDish">
@@ -83,7 +86,7 @@ function Profile() {
         <div className='userImage'>
           <img src={user.image} alt='Фото профиля' />
         </div>
-        
+
       </div> */}
     </>
   );
