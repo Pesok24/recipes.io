@@ -11,7 +11,6 @@ import NewRecipe from "./NewRecipe";
 function Profile() {
   const user = useSelector((state) => state.user);
   const data = carouselLoader[Math.ceil(Math.random() * carouselLoader.length)];
-  console.log(user);
 
   const [show, setShow] = useState(false);
 
@@ -19,7 +18,6 @@ function Profile() {
   const handleShow = () => setShow(true);
 
   const changeNameHandler = () => {
-    console.log("was clicked");
   };
 
 

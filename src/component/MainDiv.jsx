@@ -3,7 +3,6 @@ import { useSelector } from 'react-redux';
 import carouselLoader from '../utils/random-caorusel';
 
 const MainDiv = () => {
-  //let [data, setData] = useState({ reviews: [], ingridients: [] });
   useEffect(() => {
     async function test() {
       await carouselLoader();
@@ -12,7 +11,6 @@ const MainDiv = () => {
   }, []);
 
   const data = useSelector((state) => state.mainrecipe);
-  console.log(data);
 
   return (
     <>
