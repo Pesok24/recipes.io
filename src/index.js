@@ -8,6 +8,7 @@ import createSagaMiddleware from 'redux-saga';
 import sagas from './redux/saga/sagas';
 import './index.scss';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import ErrorBoundary from './component/ErrorBoundary';
 
 // Пример saga.
 
@@ -24,7 +25,9 @@ sagaMiddleware.run(sagas);
 
 ReactDOM.render(
   <Provider store={store}>
+    <ErrorBoundary>
     <App />
+    </ErrorBoundary>
   </Provider>,
   document.getElementById('root')
 );

@@ -20,8 +20,10 @@ function Input() {
     const result = await responce.json();
     dispatch({ type: 'MAINRECIPE', mainrecipe: result.data[0] });
   }
+
   console.log(text);
   if (!superinput) {
+
     return (
       <>
         <input

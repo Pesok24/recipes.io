@@ -9,12 +9,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 
 const Reviews = (props) => {
-  const dispatch = useDispatch();
-  console.log(props);
-  const reviewSelector = useSelector((state) => state.reviews);
-  console.log(reviewSelector);
-  const allParams = useParams();
-  console.log(allParams, 'Все парамсыqqqqqqqqqq');
+
+  const dispatch = useDispatch()
+  const reviewSelector = useSelector(state => state.reviews)
+  const allParams = useParams()
+
+
 
   useEffect(() => {
     const getFetch = async function () {
@@ -25,10 +25,10 @@ const Reviews = (props) => {
         },
         body: JSON.stringify({ params: allParams.id }),
       });
-      console.log('????????????', responce);
+
 
       const result = await responce.json();
-      console.log('....................', result, 'result v func');
+
 
       dispatch({ type: 'REVIEWS', reviews: result.data });
     };

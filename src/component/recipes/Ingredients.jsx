@@ -17,11 +17,10 @@ const Ingredients = (props) => {
   // }, []);
 
 
-
+ console.log("qwqdklfnowefnowefw", props.data);
+ 
   const ingerd = props.data.ingridients
 
-  console.log('++++++++++++++',ingerd);
-  
   let i = 0
 
   return ( 
@@ -31,7 +30,7 @@ const Ingredients = (props) => {
       {ingerd.map((e) => {
         i++
         return (
-        <ListGroup.Item>{i}. {e}</ListGroup.Item>
+        <ListGroup.Item>{i}. {e.name}</ListGroup.Item>
         )
       })}
       </ListGroup>

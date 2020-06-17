@@ -17,25 +17,23 @@ const Recipes = () => {
     title: '',
   });
   const location = useLocation();
-  console.log('Локация>>>>>', location);
+
   const allParams = useParams();
-  console.log(allParams, 'Все парамсыqqqqqqqqqq');
+
 
   useEffect(() => {
-    console.log('2');
 
     const getFetch = async () => {
       const resp = await doFetch({ id: allParams.id });
-      console.log('>>>>>>>', resp);
+      console.log(resp)
       setData(resp);
     };
     getFetch();
   }, []);
-
   return (
     <div id='recipesContainer'>
       <div id='recipesMain'>
-        <TitleRecipes data={data} params={location.params} />
+        {allParams.id === 'error' ?  <div>Ошибка</div> : <TitleRecipes data={data} params={location.params} />}
       </div>
     </div>
   );

@@ -15,6 +15,7 @@ import Logo from './component/Logo';
 import Example from './component/recipes/InputModal';
 
 import Profile from './component/profilePage/Profile';
+import ImageUpload from './component/ImageUpload';
 
 function App() {
   const store = useSelector((state) => state);
@@ -28,7 +29,6 @@ function App() {
         },
       });
       const result = await response.json();
-      console.log(result);
 
       if (result.session) {
         dispatch({ type: 'LOGIN', session: result.session });
@@ -52,6 +52,7 @@ function App() {
           <Home />
           <MainPage />
           <Footer />
+          {/* <ImageUpload /> */}
         </Route>
         <Route path='/login'>
           <Login />

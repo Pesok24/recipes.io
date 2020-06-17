@@ -34,10 +34,8 @@ function Example(props) {
           <Button variant="primary" onClick={() => {
             handleClose()
             const input = document.getElementById('reviewTextArea')
-            console.log(input.value);
             const doFetch = async () => {
               const responce = await inputFetch({text: input.value, params: props.params, userId: user.id})
-              console.log('qweqewqwe',responce);
               dispatch({ type: "REVIEWS", reviews: [...reviewSelector, { text: input.value , author: { name: user.name }} ] })
             }
             doFetch()

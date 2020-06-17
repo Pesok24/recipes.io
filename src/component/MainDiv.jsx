@@ -11,7 +11,6 @@ const MainDiv = () => {
   }, []);
 
   const data = useSelector((state) => state.mainrecipe);
-  console.log(data);
 
   return (
     <>
