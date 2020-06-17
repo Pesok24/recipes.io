@@ -1,7 +1,5 @@
 
 const doFetch = async (id) => {
-
-  console.log('1');
   
   // const responce = await fetch("data", {
   //   method: 'POST',
