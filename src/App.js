@@ -53,8 +53,6 @@ function App() {
           <Home />
           <MainPage />
           <Footer />
-          <PhotoModal />
-          <ImageUpload />
         </Route>
         <Route path='/login'>
           <Login />
