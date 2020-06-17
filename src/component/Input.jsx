@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import Superinput from './Superinput';
 
 function Input() {
   const [text, setText] = useState('');
-  const [showInput, setShowInput] = useState(false);
   const dispatch = useDispatch();
+  const superinput = useSelector((state) => state.superinput);
 
   async function findReceipt(e, text) {
     e.preventDefault();
@@ -21,14 +21,14 @@ function Input() {
     dispatch({ type: 'MAINRECIPE', mainrecipe: result.data[0] });
   }
   console.log(text);
-  if (!showInput) {
+  if (!superinput) {
     return (
       <>
         <input
           type='text'
           id='MainInput'
           placeholder='Укажите имеющиеся ингридиенты'
-          onClick={(e) => setShowInput(true)}
+          onClick={(e) => dispatch({ type: 'SUPERINPUT-T' })}
           required
         />
 
@@ -42,14 +42,12 @@ function Input() {
           type='text'
           id='MainInput'
           placeholder='Укажите имеющиеся ингридиенты'
-          onClick={(e) => setShowInput(true)}
           required
         />
 
         <p>и мы подберем подходящие рецепты</p>
 
         <div className='container-div'>
-      
           <Superinput />
         </div>
       </>
