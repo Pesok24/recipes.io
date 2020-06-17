@@ -8,7 +8,7 @@ import InputName from './InputName'
 import { useState, useEffect } from "react";
 import PhotoModal from "../profile/PhotoModal";
 import NewRecipe from "./NewRecipe";
-
+import PhoneModal from "./PhoneModal";
 
 function Profile() {
   const user = useSelector((state) => state.user);
@@ -44,7 +44,7 @@ function Profile() {
               <InputName/>
               <PhotoModal />
               <NewRecipe/>
-
+              <PhoneModal />
             </div>
           </div>
           <div className="previousDish">
