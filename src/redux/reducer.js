@@ -13,10 +13,9 @@ const defaultState = {
 
   isLoading: null,
 
-
   mainrecipe: { reviews: [], ingridients: [] },
-  reviews: [{ text: 'dfdwef', author: { name: '' } }]
-
+  reviews: [{ text: 'dfdwef', author: { name: '' } }],
+  superinput: false,
 };
 
 async function logOut() {
@@ -45,11 +44,22 @@ const reducer = (state = defaultState, action) => {
         id: action.session._id,
         img: action.session.image,
       };
-
       return {
         ...state,
         statusSession: true,
         user: user,
+      };
+
+    case 'SUPERINPUT-T':
+      return {
+        ...state,
+        superinput: true,
+      };
+
+    case 'SUPERINPUT-F':
+      return {
+        ...state,
+        superinput: false,
       };
 
     case 'MAINRECIPE':
@@ -59,19 +69,17 @@ const reducer = (state = defaultState, action) => {
         mainrecipe: data,
       };
 
-
     case 'CHANGE_NAME':
       return {
-        ...state, user: { ...state.user, name: action.name}
-      }
+        ...state,
+        user: { ...state.user, name: action.name },
+      };
 
-
-      case 'REVIEWS':
-        return {
-          ...state,
-          reviews: action.reviews
-        }
-
+    case 'REVIEWS':
+      return {
+        ...state,
+        reviews: action.reviews,
+      };
 
     case 'LOGOUT':
       logOut();
