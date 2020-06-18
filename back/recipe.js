@@ -61,6 +61,9 @@ router.post('/apisearch', async (req, res) => {
   );
   const result = await response.json();
   const feed = result.feed;
+  // console.log(result);
+    let array = [];
+
 
   for (let i = 0; i < feed.length; i++) {
     const recipe = new Recipe({
@@ -70,12 +73,12 @@ router.post('/apisearch', async (req, res) => {
       ingridients: feed[i].content.ingridientLines,
       recipe: feed[i].content.preparationSteps.join(' '),
     });
-    recipe.save();
+    await recipe.save();
   }
 
   
   const recipes = await Recipe.find().sort({ _id: -1 }).limit(10)
-  console.log(recipes);
+  // console.log(recipes);
   
   res.json(recipes)
 })
@@ -108,7 +111,7 @@ router.post('/review', async (req, res) => {
 // ручка изменения имени
 router.post('/changeName', async (req, res) => {
   const data = req.body;
-  console.log(data);
+  // console.log(data);
   const usss = await User.findOneAndUpdate(
     { _id: data.id },
     { name: data.name }
@@ -156,14 +159,14 @@ router.post('/delete', async (req, res) => {
 //ручка поставить лайк рецепту
 router.post('/addtomy', async (req, res) => {
   const data = req.body;
-  console.log(data);
+  // console.log(data);
   const recipe = await Recipe.findOne({ _id: data.recipeId });
   const indexUser = recipe.owners.indexOf(data.userId);
-  console.log('INDEX USER', indexUser);
-  console.log(recipe.owners);
-  console.log('do ifa', data.userId);
+  // console.log('INDEX USER', indexUser);
+  // console.log(recipe.owners);
+  // console.log('do ifa', data.userId);
   if (indexUser === -1) {
-    console.log('jopa', data.userId);
+    // console.log('jopa', data.userId);
     recipe.owners.push(data.userId);
     recipe.save();
     res.json({ data: recipe.owners });
@@ -203,14 +206,14 @@ router.post('/done', async (req, res) => {
 router.post('/getlikes', async (req, res) => {
   const data = req.body;
   const recipe = await Recipe.findOne({ _id: data.data });
-  console.log('PORTAL', recipe.owners);
+  // console.log('PORTAL', recipe.owners);
   res.json(recipe.owners);
 });
 
 //статус
 router.post('/tostatus', async (req, res) => {
   let data = req.body;
-  console.log(data);
+  // console.log(data);
   const user = await User.findOne({ _id: data.user });
   user.status = '';
   user.status = data.recipe;
@@ -240,19 +243,19 @@ router.post('/getreview', async (req, res) => {
 
 router.post('/renderreview', async (req, res) => {
   const data = req.body;
-  console.log(data);
+  // console.log(data);
   const reviews = await Reviews.find({ author: data.userId }).populate(
     'recipe'
   );
 
-  console.log(reviews);
+  // console.log(reviews);
   res.json(reviews);
 });
 
 router.post('/likecarousel', async (req, res) => {
   const data = req.body;
   const recipes = await Recipe.find({ owners: data.id });
-  console.log('ЭТО ВОТ ЭТО', recipes);
+  // console.log('ЭТО ВОТ ЭТО', recipes);
   res.json(recipes);
 });
 
@@ -289,13 +292,13 @@ router.post('/phone', (req, res) => {
         });
 
         res.on('end', function () {
-          console.log('ответ сервера: ' + str);
+          // console.log('ответ сервера: ' + str);
           var parsedData = JSON.parse(str);
-          console.log('server_id=' + parsedData.send[0].server_id);
+          // console.log('server_id=' + parsedData.send[0].server_id);
         });
       })
       .on('error', function (err) {
-        console.log('ошибка сети ' + err);
+        // console.log('ошибка сети ' + err);
       });
   }, 30000);
 });
@@ -308,14 +311,14 @@ router.post('/phone', (req, res) => {
 // }))
 router.post('/updatePhoto', async (req, res) => {
   let data = req.body;
-  console.log(typeof req.body.src);
+  // console.log(typeof req.body.src);
   await User.findOneAndUpdate(
     { _id: req.session.user._id },
     { image: data.src }
   );
   const g = await User.findById({ _id: req.session.user._id });
   req.session.user = g;
-  console.log(g);
+  // console.log(g);
   res.json({ asd: 'красава' });
 });
 

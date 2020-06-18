@@ -1,25 +1,24 @@
-import actionType from './actions';
-import doFetch from '../fetchFunc';
-import actions from './actions';
+import actionType from "./actions";
+import doFetch from "../fetchFunc";
+import actions from "./actions";
 
 const defaultState = {
   statusSession: false,
   user: {
-    name: '',
-    id: '',
-    image: 'https://7themes.su/img/no-ava.png',
-
+    name: "",
+    id: "",
+    image: "https://7themes.su/img/no-ava.png",
   },
-  status: {status: 'user is free rigth now', id: 0},
-  isLoading: null,
+  status: { status: "user is free rigth now", id: 0 },
+  isLoading: false,
   mainrecipe: { reviews: [], ingridients: [] },
-  reviews: [{ text: 'dfdwef', author: { name: '' } }],
+  reviews: [{ text: "dfdwef", author: { name: "" } }],
   superinput: false,
 };
 
 async function logOut() {
-  await fetch('/logout', {
-    method: 'POST',
+  await fetch("/logout", {
+    method: "POST",
   });
 }
 
@@ -37,13 +36,13 @@ const reducer = (state = defaultState, action) => {
         isLoading: true,
       };
 
-    case 'STATUS':
+    case "STATUS":
       return {
         ...state,
         status: { status: action.status, id: action.id },
       };
 
-    case 'LOGIN':
+    case "LOGIN":
       const user = {
         name: action.session.name,
         id: action.session._id,
@@ -55,50 +54,49 @@ const reducer = (state = defaultState, action) => {
         user: user,
       };
 
-    case 'SUPERINPUT-T':
+    case "SUPERINPUT-T":
       return {
         ...state,
         superinput: true,
       };
 
-    case 'SUPERINPUT-F':
+    case "SUPERINPUT-F":
       return {
         ...state,
         superinput: false,
       };
 
-    case 'MAINRECIPE':
+    case "MAINRECIPE":
       const data = action.mainrecipe;
       return {
         ...state,
         mainrecipe: data,
       };
 
-    case 'CHANGE_NAME':
+    case "CHANGE_NAME":
       return {
         ...state,
         user: { ...state.user, name: action.name },
       };
 
-    case 'REVIEWS':
+    case "REVIEWS":
       return {
         ...state,
         reviews: action.reviews,
       };
 
-      // case "CHANGE_IMG": 
-      // return {
-      //     ...state,
-      //     user: { image: action. }
-      // }
+    // case "CHANGE_IMG":
+    // return {
+    //     ...state,
+    //     user: { image: action. }
+    // }
 
-    case 'LOGOUT':
+    case "LOGOUT":
       logOut();
-      localStorage.setItem('session', false);
+      localStorage.setItem("session", false);
 
-      localStorage.setItem('user.name', '');
-      return { ...state, statusSession: false, user: { name: '' } };
-
+      localStorage.setItem("user.name", "");
+      return { ...state, statusSession: false, user: { name: "" } };
     default:
       return state;
   }

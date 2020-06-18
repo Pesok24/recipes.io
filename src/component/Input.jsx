@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Superinput from './Superinput';
 
-function Input() {
+function Input(props) {
   const [text, setText] = useState('');
   const dispatch = useDispatch();
   const superinput = useSelector((state) => state.superinput);
@@ -50,7 +50,7 @@ function Input() {
         <p>recipes.io 'll help you with that</p>
 
         <div className='container-div'>
-          <Superinput />
+          <Superinput setData={props.setData}/>
         </div>
       </>
     );
