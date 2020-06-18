@@ -16,6 +16,7 @@ import Example from './component/recipes/InputModal';
 
 import Profile from './component/profilePage/Profile';
 import ImageUpload from './component/ImageUpload';
+import PhotoModal from './component/profile/PhotoModal';
 
 function App() {
   const store = useSelector((state) => state);
@@ -52,16 +53,12 @@ function App() {
           <Home />
           <MainPage />
           <Footer />
-          {/* <ImageUpload /> */}
         </Route>
         <Route path='/login'>
           <Login />
         </Route>
         <Route path='/singup'>
           <SingUp />
-        </Route>
-        <Route path='/profile'>
-          <Profile />
         </Route>
         <Route path='/recipes/:id'>
           <Logo />

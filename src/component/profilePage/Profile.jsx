@@ -1,12 +1,15 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-import Status from '../profile/Status';
-import carouselLoader from '../../utils/random-caorusel';
-import './Profile.css';
-import InputName from './InputName';
-import { useState, useEffect } from 'react';
-import LikeCarousel from '../carousels/like-carousel';
+
+import React from "react";
+import { useSelector } from "react-redux";
+import Status from "../profile/Status";
+import carouselLoader from "../../utils/random-caorusel";
+import "./Profile.css";
+import CaruselRandom from "../carousels/random";
+import InputName from './InputName'
+import { useState, useEffect } from "react";
+import PhotoModal from "../profile/PhotoModal";
+import NewRecipe from "./NewRecipe";
+import PhoneModal from "./PhoneModal";
 
 function Profile() {
   const user = useSelector((state) => state.user);
@@ -91,12 +94,12 @@ function Profile() {
                 </p>
               </div>
             </div>
-            <div className='profileInfo__buttons'>
-              <InputName />
-              <button className='profileInfo__button button'>
-                Change photo
-              </button>
-              <button className='profileInfo__button button'>Add recipe</button>
+
+            <div className="profileInfo__buttons">
+              <InputName/>
+              <PhotoModal />
+              <NewRecipe/>
+              <PhoneModal />
             </div>
           </div>
           <div className='previousDish'>
@@ -167,7 +170,7 @@ function Profile() {
         <div className='userImage'>
           <img src={user.image} alt='Фото профиля' />
         </div>
-        
+
       </div> */}
     </>
   );

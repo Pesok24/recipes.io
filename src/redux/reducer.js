@@ -1,5 +1,6 @@
 import actionType from './actions';
 import doFetch from '../fetchFunc';
+import actions from './actions';
 
 const defaultState = {
   statusSession: false,
@@ -7,6 +8,7 @@ const defaultState = {
     name: '',
     id: '',
     image: 'https://7themes.su/img/no-ava.png',
+
   },
   status: {status: 'user is free rigth now', id: 0},
   isLoading: null,
@@ -83,6 +85,12 @@ const reducer = (state = defaultState, action) => {
         ...state,
         reviews: action.reviews,
       };
+
+      // case "CHANGE_IMG": 
+      // return {
+      //     ...state,
+      //     user: { image: action. }
+      // }
 
     case 'LOGOUT':
       logOut();

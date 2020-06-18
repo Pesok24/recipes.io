@@ -18,7 +18,7 @@ const userSchema = new Schema({
     type: String,
     required: [true, 'enter password'],
   },
-  image: { type: String, default: 'http://interra.tv/static/images/no-ava.png' },
+  image: { type: String, default: 'https://affordableamericaninsurance.com/wp-content/uploads/2017/04/no-image-icon-hi.png' },
   friends: [{ type: String }],
   history: [{ type: ObjectId, ref: 'Recipe' }],
   status: { type: ObjectId, ref: 'Recipe' },
