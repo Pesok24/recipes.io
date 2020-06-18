@@ -15,6 +15,7 @@ const defaultState = {
   mainrecipe: { reviews: [], ingridients: [] },
   reviews: [{ text: 'dfdwef', author: { name: '' } }],
   superinput: false,
+  steps: [{steps: [{step: [{ steps: ['qwe'] }] }]}]
 };
 
 async function logOut() {
@@ -91,6 +92,12 @@ const reducer = (state = defaultState, action) => {
       //     ...state,
       //     user: { image: action. }
       // }
+
+      case 'STEPS':
+        return {
+          ...state,
+          steps: [{steps: [{step: action.steps }]}],
+        };
 
     case 'LOGOUT':
       logOut();
