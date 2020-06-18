@@ -10,7 +10,7 @@ const apiKey = '0b6291b8eb0e48d595c1f6ef3cc36eb0'
 
 //Отрисовывает все рецепты
 router.get('/all', async (req, res) => {
-  // const response = await fetch(`https://api.spoonacular.com/recipes/random?apiKey=${apiKey}`)
+  // const response = await fetch(`https://yummly2.p.rapidapi.com/feeds/search?FAT_KCALMax=1000&maxTotalTimeInSeconds=7200&allowedAttribute=diet-lacto-vegetarian%252Cdiet-low-fodmap&q=${query}&start=0&maxResult=18`)
   // const result = await response.json()
   // // console.log(result);
   
@@ -22,7 +22,7 @@ router.get('/all', async (req, res) => {
   //   recipe: result.recipes[0].instructions,
   // })
   // recipe.save()
-  const recipes = await Recipe.find({})
+  const recipes = await Recipe.find().sort({ _id: -1 }).limit(15)
 
   res.json(recipes)
 })
@@ -46,7 +46,7 @@ router.post('/search', async (req, res) => {
 
 router.post('/apisearch', async (req, res) => {
   const data = req.body.data;
-  console.log(req.body);
+  // console.log(req.body);
   
   const query = data.split(',').join('%20');
   const response = await fetch(`https://yummly2.p.rapidapi.com/feeds/search?FAT_KCALMax=1000&maxTotalTimeInSeconds=7200&allowedAttribute=diet-lacto-vegetarian%252Cdiet-low-fodmap&q=${query}&start=0&maxResult=18`, {
@@ -58,6 +58,8 @@ router.post('/apisearch', async (req, res) => {
   })
   const result = await response.json()  
   const feed = result.feed
+  // console.log(feed);
+  
   for (let i = 0; i < feed.length; i++) {
     const recipe = new Recipe({
       title: feed[i].display.displayName,
@@ -68,9 +70,11 @@ router.post('/apisearch', async (req, res) => {
     })
     recipe.save()
   }
-
-  // const recipes = await Recipe.find({ingredients: ingr})
-  // res.json(recipes)
+  
+  const recipes = await Recipe.find().sort({ _id: -1 }).limit(10)
+  console.log(recipes);
+  
+  res.json(recipes)
 })
 
 //ручка для перехода по рецептам
