@@ -1,4 +1,5 @@
 async function carouselLike(id) {
+  console.log('с феча', id);
   const responce = await fetch('/recipe/likecarousel', {
     method: 'POST',
     headers: {

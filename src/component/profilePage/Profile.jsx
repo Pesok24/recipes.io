@@ -1,15 +1,15 @@
-
-import React from "react";
-import { useSelector } from "react-redux";
-import Status from "../profile/Status";
-import carouselLoader from "../../utils/random-caorusel";
-import "./Profile.css";
-import CaruselRandom from "../carousels/random";
-import InputName from './InputName'
-import { useState, useEffect } from "react";
-import PhotoModal from "../profile/PhotoModal";
-import NewRecipe from "./NewRecipe";
-import PhoneModal from "./PhoneModal";
+import React from 'react';
+import { useSelector } from 'react-redux';
+import Status from '../profile/Status';
+import carouselLoader from '../../utils/random-caorusel';
+import './Profile.css';
+import InputName from './InputName';
+import { useState, useEffect } from 'react';
+import PhotoModal from '../profile/PhotoModal';
+import NewRecipe from './NewRecipe';
+import PhoneModal from './PhoneModal';
+import { Link } from 'react-router-dom';
+import LikeCarousel from '../carousels/like-carousel';
 
 function Profile() {
   const user = useSelector((state) => state.user);
@@ -95,10 +95,10 @@ function Profile() {
               </div>
             </div>
 
-            <div className="profileInfo__buttons">
-              <InputName/>
+            <div className='profileInfo__buttons'>
+              <InputName />
               <PhotoModal />
-              <NewRecipe/>
+              <NewRecipe />
               <PhoneModal />
             </div>
           </div>
@@ -160,10 +160,8 @@ function Profile() {
               </ul>
             </div>
           </div>
-          <div className='youdlike'>
-            {' '}
-            <LikeCarousel />
-          </div>
+          <div className='youdlike'> </div>
+        <LikeCarousel />
         </div>
       </div>
       {/* <div>

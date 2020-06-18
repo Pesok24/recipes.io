@@ -16,7 +16,7 @@ function LikeCarousel() {
       setData(array);
     }
     some();
-  }, []);
+  }, [user.id]);
 
   let settings = {
     dots: false,
@@ -30,7 +30,7 @@ function LikeCarousel() {
   return (
     <>
       <div className='carouselRandom-main'>
-        <h2 className='carouselTitle'>Mmmm.. yummy!</h2>
+        <h2 className='carouselTitle'>❤ Recipes that you liked</h2>
         <Slider {...settings}>
           {data.map((item) => {
             const itemId = item._id ? item._id : 'error';
