@@ -209,7 +209,7 @@ a {
   max-height: 300px;
 }
 
-#root {
+body {
   background-image: url('./images/3465.jpg');
   background-repeat: no-repeat;
   background-size: cover;
