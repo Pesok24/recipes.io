@@ -4,6 +4,7 @@ import { Container, Row, Col, Image } from 'react-bootstrap';
 import Ingredients from './Ingredients';
 import Recipe from './RecipeMain';
 import Likes from './Likes';
+import Tostatus from './Idoit';
 
 const TitleRecipes = (props) => {
   return (
@@ -34,6 +35,7 @@ const TitleRecipes = (props) => {
           <Recipe data={props.data} />
         </Col>
         <Likes />
+        <Tostatus />
       </Container>
     </>
   );

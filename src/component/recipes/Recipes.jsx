@@ -33,7 +33,7 @@ const Recipes = () => {
   return (
     <div id='recipesContainer'>
       <div id='recipesMain'>
-        {allParams.id === 'error' ?  <div>Ошибка</div> : <TitleRecipes data={data} params={location.params} />}
+        {allParams.id === 'error' ?  <div>Error</div> : <TitleRecipes data={data} params={location.params} />}
       </div>
     </div>
   );

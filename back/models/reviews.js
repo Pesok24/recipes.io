@@ -5,7 +5,7 @@ const reviewsSchema = new Schema({
   text: String,
   author: { type: ObjectId, ref: 'User' },
   recipe: { type: ObjectId, ref: 'Recipe' },
-  flag: Boolean
+  flag: { type: String, default: '🍵' },
 });
 
 const Reviews = model('Reviews', reviewsSchema);

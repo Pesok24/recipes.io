@@ -42,7 +42,7 @@ const Reviews = (props) => {
     <>
       <div id='recipesHover'>
         <ListGroup.Item>
-          <b>Отзывы:</b>
+          <b>Reviews:</b>
         </ListGroup.Item>
         <div id='reviewsList'>
           <ListGroup id='reviewListGroup'>

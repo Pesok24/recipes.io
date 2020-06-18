@@ -1,7 +1,6 @@
 {
   "name": "app",
   "version": "0.1.0",
-  "pppproxy": "http://yeap.fun:4000",
   "proxy": "http://localhost:4000",
   "private": true,
   "dependencies": {

@@ -5,15 +5,14 @@ import CaruselRandom from './carousels/random';
 import Logo from './Logo';
 
 const MainPage = () => {
-
   return (
     <>
       <div className='container'>
         <div className='MainPage'>
           <Logo />
           <Input />
-          <MainDiv />
         </div>
+        <MainDiv />
         <CaruselRandom />
       </div>
     </>

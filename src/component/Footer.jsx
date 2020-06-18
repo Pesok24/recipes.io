@@ -4,10 +4,10 @@ import { Link } from 'react-router-dom';
 const Footer = () => {
   return ( 
     <div id='footerDiv'>
-      <Link to=''><p>О проекте</p></Link>
-      <Link to=''><p>Рецепты</p></Link>
-      <Link to=''><p>Поваренная книга</p></Link>
-      <Link to=''><p>Поварятам</p></Link>
+      <Link to=''><p>About</p></Link>
+      <Link to=''><p>Solutions</p></Link>
+      <Link to=''><p>Team</p></Link>
+      <Link to=''><p>Your Recipes.io</p></Link>
     </div>
    );
 }

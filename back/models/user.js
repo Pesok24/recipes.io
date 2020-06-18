@@ -22,6 +22,7 @@ const userSchema = new Schema({
   friends: [{ type: String }],
   history: [{ type: ObjectId, ref: 'Recipe' }],
   status: { type: ObjectId, ref: 'Recipe' },
+  
   favorite: [{ type: ObjectId, ref: 'Recipe' }]
 });
 
