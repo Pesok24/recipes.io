@@ -6,16 +6,18 @@ const FileStore = require('session-file-store')(session);
 const cookieParser = require('cookie-parser');
 const authRouter = require('./auth');
 const recipeRouter = require('./recipe');
-const bodyParser = require('body-parser')
+const bodyParser = require('body-parser');
 
 const app = express();
 
-
-mongoose.connect('mongodb+srv://eda:elbruseda@cluster0-vwjpv.mongodb.net/eda?retryWrites=true&w=majority', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-  useCreateIndex: true,
-});
+mongoose.connect(
+  'mongodb+srv://eda:elbruseda@cluster0-vwjpv.mongodb.net/eda?retryWrites=true&w=majority',
+  {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useCreateIndex: true,
+  }
+);
 
 app.use(morgan('dev'));
 
@@ -34,7 +36,7 @@ app.use(
     resave: false,
     saveUninitialized: false,
     cookie: {
-      expires: 600000,
+      expires: 60000000,
     },
   })
 );

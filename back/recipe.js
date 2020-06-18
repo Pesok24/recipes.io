@@ -244,53 +244,53 @@ router.post('/renderreview', async (req, res) => {
 
 router.post('/likecarousel', async (req, res) => {
   const data = req.body;
-  const recipes = await Recipe.find({ owners: req.body.id });
+  const recipes = await Recipe.find({ owners: data.id });
   console.log('ЭТО ВОТ ЭТО', recipes);
   res.json(recipes);
 });
 
 router.post('/phone', (req, res) => {
   const data = req.body;
+  setTimeout(() => {
+    var http = require('http');
+    var querystring = require('querystring');
 
-  setTimeout(() => {}, 120000);
-  var http = require('http');
-  var querystring = require('querystring');
+    var phone = data.phone; // номер телефона
+    var text = 'recipe.io waiting for you review ;)'; // текст
+    var from = 'INFORM'; // имя отправителя из списка https://smspilot.ru/my-sender.php
+    // !!! Замените API-ключ на свой https://smspilot.ru/my-settings.php#api
+    var apikey =
+      '5A3ZVL052Q35ZQC09L79D82W5E59K7NMSI61398OC4M8G887G5YKCE5X5294609A';
+    var uri = [
+      'http://smspilot.ru/api.php',
+      '?send=',
+      querystring.escape(text),
+      '&to=',
+      phone,
+      '&from=',
+      from,
+      '&apikey=',
+      apikey,
+      '&format=json',
+    ].join('');
 
-  var phone = data.phone; // номер телефона
-  var text = 'Не забудьте оставить отзыв о рецепте на recipe.io'; // текст
-  var from = 'INFORM'; // имя отправителя из списка https://smspilot.ru/my-sender.php
-  // !!! Замените API-ключ на свой https://smspilot.ru/my-settings.php#api
-  var apikey =
-    '5A3ZVL052Q35ZQC09L79D82W5E59K7NMSI61398OC4M8G887G5YKCE5X5294609A';
-  var uri = [
-    'http://smspilot.ru/api.php',
-    '?send=',
-    querystring.escape(text),
-    '&to=',
-    phone,
-    '&from=',
-    from,
-    '&apikey=',
-    apikey,
-    '&format=json',
-  ].join('');
+    http
+      .get(uri, function (res) {
+        var str = '';
+        res.on('data', function (chunk) {
+          str += chunk;
+        });
 
-  http
-    .get(uri, function (res) {
-      var str = '';
-      res.on('data', function (chunk) {
-        str += chunk;
+        res.on('end', function () {
+          console.log('ответ сервера: ' + str);
+          var parsedData = JSON.parse(str);
+          console.log('server_id=' + parsedData.send[0].server_id);
+        });
+      })
+      .on('error', function (err) {
+        console.log('ошибка сети ' + err);
       });
-
-      res.on('end', function () {
-        console.log('ответ сервера: ' + str);
-        var parsedData = JSON.parse(str);
-        console.log('server_id=' + parsedData.send[0].server_id);
-      });
-    })
-    .on('error', function (err) {
-      console.log('ошибка сети ' + err);
-    });
+  }, 30000);
 });
 
 // router.post(('/updatePhoto', async (req, res)=>{
@@ -299,14 +299,17 @@ router.post('/phone', (req, res) => {
 //   // const user = await User.findOneAndUpdate({ _id: data.id }, { image: data.src })
 //   res.json('h')
 // }))
-router.post('/updatePhoto', async(req, res) => {
+router.post('/updatePhoto', async (req, res) => {
   let data = req.body;
   console.log(typeof req.body.src);
-  await User.findOneAndUpdate({ _id: req.session.user._id }, { image: data.src })
-  const g = await User.findById({_id: req.session.user._id})
-  req.session.user = g
-  console.log(g)
-  res.json({ asd: 'красава'})
-})
+  await User.findOneAndUpdate(
+    { _id: req.session.user._id },
+    { image: data.src }
+  );
+  const g = await User.findById({ _id: req.session.user._id });
+  req.session.user = g;
+  console.log(g);
+  res.json({ asd: 'красава' });
+});
 
 module.exports = router;
