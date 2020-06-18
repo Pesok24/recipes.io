@@ -23,31 +23,34 @@ function CaruselRandom() {
     slidesToScroll: 3,
     arrows: true,
   };
-  
 
   return (
     <>
-      <div class='carouselRandom-main'>
-        <h2 class='carouselTitle'>Вкусные решения</h2>
+      <div className='carouselRandom-main'>
+        <h2 className='carouselTitle'>Mmmm.. yummy!</h2>
         <Slider {...settings}>
-          {data.map((item) =>  {
-            const itemId  = item._id ? item._id : 'error'
+          {data.map((item) => {
+            const itemId = item._id ? item._id : 'error';
             return (
-            <Link  to={{ pathname: `/recipes/${itemId}`, params: itemId }}><div className='carouselRandom-element'>
-              <div  className='carouselRandom-image'>
-                <div className='shadow'>
-                  <img
-                    className='carousel-img'
-                    src={item.image}
-                    alt={item.title}
-                  />
+              <Link
+                to={{ pathname: `/recipes/${itemId}`, params: itemId }}
+                key={itemId}
+              >
+                <div className='carouselRandom-element'>
+                  <div className='carouselRandom-image'>
+                    <div className='shadow'>
+                      <img
+                        className='carousel-img'
+                        src={item.image}
+                        alt={item.title}
+                      />
+                    </div>
+                  </div>
+                  <div className='carousel-title'>{item.title}</div>
                 </div>
-              </div>
-              <div className='carousel-title'>{item.title}</div>
-            </div>
-            </Link>
-          )
-})}
+              </Link>
+            );
+          })}
         </Slider>
       </div>
     </>

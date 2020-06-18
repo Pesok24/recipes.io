@@ -15,7 +15,7 @@ const MainDiv = () => {
   return (
     <>
       <div>
-        <h2 class='carouselTitle'>Пользователи выбирают</h2>
+        <h2 className='carouselTitle'>Let's try!</h2>
         <div className='mainDiv'>
           <img src={data.image} alt={data.title} className='main-page-img' />
           <p>
@@ -26,8 +26,8 @@ const MainDiv = () => {
             {data.recipe}
             <br />
             <br />
-            <span class='likes'>
-              Понравилось: 🙂 {data.reviews ? data.reviews.length : 0}
+            <span className='likes'>
+              Likes: 🙂 {data.reviews ? data.reviews.length : 0}
             </span>
           </p>
         </div>

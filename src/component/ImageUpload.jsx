@@ -4,7 +4,9 @@ import ReactDOM from 'react-dom';
 import ReactCrop from 'react-image-crop';
 import 'react-image-crop/dist/ReactCrop.css';
 import { useDispatch } from 'react-redux';
+import updatePhoto from '../updatePhotoFunc';
 // import { dressForNewLook } from '../redux/actioncreators/actionsSaga'
+
 
 function CropForm() {
   const dispatch = useDispatch()
@@ -95,8 +97,11 @@ const [url,setUrl] = useState(null);
             onChange={onCropChange}
           />
         )}
-          <img alt="Crop" /* style={{ maxWidth: '100%' }} */ src={url} />
-          <img alt="Crop" src='' />
+          <img alt="" /* style={{ maxWidth: '100%' }} */ src={url} />
+          <img alt="" src='' />
+          <button onClick={() => {
+            updatePhoto({ src: state.src })
+          }}>Обновить</button>
       </div>
     );
 }

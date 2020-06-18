@@ -24,7 +24,7 @@ function Example(props) {
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Что готовите?</Modal.Title>
+          <Modal.Title>Do you like it?</Modal.Title>
         </Modal.Header>
         <Modal.Body><Form.Control as="textarea" rows="3" id='reviewTextArea' /></Modal.Body>
         <Modal.Footer>
@@ -40,7 +40,7 @@ function Example(props) {
             }
             doFetch()
           }}>
-            Отправить
+            Send
           </Button>
         </Modal.Footer>
       </Modal>
