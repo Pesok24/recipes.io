@@ -1,25 +1,22 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
-
-import { loadingStart } from '../actioncreators/actionsSaga';
-
-import actionType from '../actions';
+import actionTypes from '../actions';
+//import { loadingStart, loadingSuccess, loadingError } from '../actionCreators/actionCreatorSaga';
 
 
-function* loadTodo() {
+// Функция-работник.
+function* loadImage() {
   try {
-
-
-
-    yield put(loadingStart());
-
+   // yield put(loadingStart());
+   // const result = yield call(fetchImage);
+   // yield put(loadingSuccess(result[0].url));
   } catch (error) {
-    console.log(error);
+  //  yield put(loadingError(error.message));
   }
 }
 
 // Функция-наблюдатель.
-function* sagas() {
-  yield takeEvery(actionType.saga, loadTodo);
+function* saga() {
+  yield takeEvery(actionTypes.loadImageSaga, loadImage);
 }
 
-export default sagas;
+export default saga;
