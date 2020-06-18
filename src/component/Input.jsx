@@ -29,12 +29,12 @@ function Input() {
         <input
           type='text'
           id='MainInput'
-          placeholder='Укажите имеющиеся ингридиенты'
+          placeholder='Type ingredients here'
           onClick={(e) => dispatch({ type: 'SUPERINPUT-T' })}
           required
         />
 
-        <p>и мы подберем подходящие рецепты</p>
+        <p>recipes.io 'll help you with that</p>
       </>
     );
   } else {
@@ -43,11 +43,11 @@ function Input() {
         <input
           type='text'
           id='MainInput'
-          placeholder='Укажите имеющиеся ингридиенты'
+          placeholder='Type ingredients here'
           required
         />
 
-        <p>и мы подберем подходящие рецепты</p>
+        <p>recipes.io 'll help you with that</p>
 
         <div className='container-div'>
           <Superinput />

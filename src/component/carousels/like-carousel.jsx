@@ -1,18 +1,21 @@
 import React, { useState, useEffect } from 'react';
-import carouselLoader from '../../utils/random-caorusel';
+import carouselLike from '../../utils/like-carousel';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
-function CaruselRandom() {
+function LikeCarousel() {
   const [data, setData] = useState([{ reviews: [], ingridients: [] }]);
+  const user = useSelector((state) => state.user);
+
   useEffect(() => {
-    async function test() {
-      let array = await carouselLoader();
+    async function some() {
+      let array = await carouselLike(user.id);
       setData(array);
     }
-    test();
+    some();
   }, []);
 
   let settings = {
@@ -57,4 +60,4 @@ function CaruselRandom() {
   );
 }
 
-export default CaruselRandom;
+export default LikeCarousel;

@@ -26,7 +26,7 @@ const Ingredients = (props) => {
   return ( 
     <div id='ingredients'>
       <ListGroup>
-        <ListGroup.Item><b>Вам понадобится:</b></ListGroup.Item>
+        <ListGroup.Item><b>Ingredients:</b></ListGroup.Item>
       {ingerd.map((e) => {
         i++
         return (

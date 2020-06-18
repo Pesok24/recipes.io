@@ -3,16 +3,13 @@ import doFetch from '../fetchFunc';
 
 const defaultState = {
   statusSession: false,
-
   user: {
     name: '',
     id: '',
     image: 'https://7themes.su/img/no-ava.png',
-    status: 'Ничего не готовит',
   },
-
+  status: {status: 'user is free rigth now', id: 0},
   isLoading: null,
-
   mainrecipe: { reviews: [], ingridients: [] },
   reviews: [{ text: 'dfdwef', author: { name: '' } }],
   superinput: false,
@@ -36,6 +33,12 @@ const reducer = (state = defaultState, action) => {
       return {
         ...state,
         isLoading: true,
+      };
+
+    case 'STATUS':
+      return {
+        ...state,
+        status: { status: action.status, id: action.id },
       };
 
     case 'LOGIN':
