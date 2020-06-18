@@ -14,6 +14,7 @@ const defaultState = {
   mainrecipe: { reviews: [], ingridients: [] },
   reviews: [{ text: "dfdwef", author: { name: "" } }],
   superinput: false,
+  steps: [{steps: [{step: [{ steps: ['qwe'] }] }]}]
 };
 
 async function logOut() {
@@ -91,7 +92,13 @@ const reducer = (state = defaultState, action) => {
     //     user: { image: action. }
     // }
 
-    case "LOGOUT":
+      case 'STEPS':
+        return {
+          ...state,
+          steps: [{steps: [{step: action.steps }]}],
+        };
+
+    case 'LOGOUT':
       logOut();
       localStorage.setItem("session", false);
 
