@@ -5,7 +5,7 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import { Link } from 'react-router-dom';
 
-function CaruselRandom() {
+function CaruselRandom(props) {
   const [data, setData] = useState([{ reviews: [], ingridients: [] }]);
   useEffect(() => {
     async function test() {
@@ -14,6 +14,12 @@ function CaruselRandom() {
     }
     test();
   }, []);
+ 
+  
+  
+  useEffect(() => {
+    if (props.data)  console.log(props.data);
+  }, [])
 
   let settings = {
     dots: false,

@@ -2,7 +2,7 @@ import { TagInput } from 'reactjs-tag-input';
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 
-function Superinput() {
+function Superinput(props) {
   const dispatch = useDispatch();
   //  const superinput = useSelector((state) => state.superinput);
   const [tags, setTags] = useState([]);
@@ -24,7 +24,7 @@ function Superinput() {
     });
     const result = await response.json()
     console.log(result);
-    return result;
+    props.setData(result);
   }
 
   return (
