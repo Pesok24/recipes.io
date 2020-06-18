@@ -9,20 +9,7 @@ const apiKey = '0b6291b8eb0e48d595c1f6ef3cc36eb0';
 
 //Отрисовывает все рецепты
 router.get('/all', async (req, res) => {
-  // const response = await fetch(`https://api.spoonacular.com/recipes/random?apiKey=${apiKey}`)
-  // const result = await response.json()
-  // // console.log(result);
-
-  // const recipe = new Recipe({
-  //   title: result.recipes[0].title,
-  //   image: result.recipes[0].image,
-  //   steps: result.recipes[0].analyzedInstructions,
-  //   ingridients: result.recipes[0].extendedIngredients,
-  //   recipe: result.recipes[0].instructions,
-  // })
-  // recipe.save()
   const recipes = await Recipe.find({});
-
   res.json(recipes);
 });
 
