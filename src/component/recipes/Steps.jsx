@@ -2,8 +2,10 @@ import React, { useState } from 'react';
 import doFetch from '../../fetchFunc';
 import { useEffect } from 'react';
 import { ListGroup } from 'react-bootstrap';
+import { useSelector } from 'react-redux';
 
-const Ingredients = (props) => {
+const Steps = (props) => {
+  // const steps = props.data.steps||[]
 
   // const [ingerd, setIngerd] = useState([])
 
@@ -15,21 +17,28 @@ const Ingredients = (props) => {
   //   };
   //   getFetch();
   // }, []);
-
+  const recipeState = useSelector(state => state.steps)
+  console.log(recipeState);
   
- 
-  const ingerd = props.data.ingridients
+
+  //   useEffect(() => {
+
+  // }, []);
+
+
+
+ const steps = recipeState[0].steps[0].step[0].steps
 
   let i = 0
 
   return ( 
-    <div id='ingredients'>
+    <div className='ingredients'>
       <ListGroup>
-        <ListGroup.Item><b>Ingredients:</b></ListGroup.Item>
-      {ingerd.map((e) => {
+  <ListGroup.Item><b>Steps:</b></ListGroup.Item>
+      {steps.map((e) => {
         i++
         return (
-        <ListGroup.Item><b>{i}.</b> {e.name}</ListGroup.Item>
+        <ListGroup.Item><b>{i}.</b> {e.step}</ListGroup.Item>
         )
       })}
       </ListGroup>
@@ -37,4 +46,4 @@ const Ingredients = (props) => {
    );
 }
  
-export default Ingredients;
+export default Steps;

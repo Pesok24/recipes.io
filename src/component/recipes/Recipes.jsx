@@ -17,7 +17,7 @@ const Recipes = () => {
     title: '',
   });
   const location = useLocation();
-
+  const dispatch = useDispatch()
   const allParams = useParams();
 
 
@@ -26,6 +26,7 @@ const Recipes = () => {
     const getFetch = async () => {
       const resp = await doFetch({ id: allParams.id });
       console.log(resp)
+       dispatch({ type: 'STEPS', steps: resp.steps })
       setData(resp);
     };
     getFetch();

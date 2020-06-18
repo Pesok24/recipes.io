@@ -9,7 +9,10 @@ const apiKey = '0b6291b8eb0e48d595c1f6ef3cc36eb0';
 
 //Отрисовывает все рецепты
 router.get('/all', async (req, res) => {
+
   const recipes = await Recipe.find({});
+
+
   res.json(recipes);
 });
 
@@ -31,7 +34,6 @@ router.post('/search', async (req, res) => {
 
 router.post('/apisearch', async (req, res) => {
   const data = req.body.data;
-  console.log(req.body);
 
   const query = data.split(',').join('%20');
   const response = await fetch(
@@ -43,9 +45,11 @@ router.post('/apisearch', async (req, res) => {
         'x-rapidapi-key': 'dd1bc0357dmsh0ba4599a6c83c49p189e69jsne4d3cdbfe506',
       },
     }
+
   );
   const result = await response.json();
   const feed = result.feed;
+
   for (let i = 0; i < feed.length; i++) {
     const recipe = new Recipe({
       title: feed[i].display.displayName,
@@ -57,9 +61,13 @@ router.post('/apisearch', async (req, res) => {
     recipe.save();
   }
 
-  // const recipes = await Recipe.find({ingredients: ingr})
-  // res.json(recipes)
-});
+  
+  const recipes = await Recipe.find().sort({ _id: -1 }).limit(10)
+  console.log(recipes);
+  
+  res.json(recipes)
+})
+
 
 //ручка для перехода по рецептам
 router.post('/link', async (req, res) => {

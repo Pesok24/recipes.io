@@ -5,6 +5,7 @@ import Ingredients from './Ingredients';
 import Recipe from './RecipeMain';
 import Likes from './Likes';
 import Tostatus from './Idoit';
+import Steps from './Steps';
 
 const TitleRecipes = (props) => {
   return (
@@ -33,6 +34,9 @@ const TitleRecipes = (props) => {
         </Row>
         <Col>
           <Recipe data={props.data} />
+        </Col>
+        <Col>
+          <Steps data={props.data} />
         </Col>
         <Likes />
         <Tostatus />

@@ -16,6 +16,7 @@ const doFetch = async (id) => {
 
     });
   const result = await responce.json();
+  // dispatch({ type: 'STEPS', steps: result })
   return result;
 };
 
