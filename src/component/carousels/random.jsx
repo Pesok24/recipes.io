@@ -1,25 +1,26 @@
 import React, { useState, useEffect } from 'react';
-import carouselLoader from '../../utils/random-caorusel';
+import { useSelector, useDispatch } from 'react-redux';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import { Link } from 'react-router-dom';
+import carouselLoader from '../../redux/actioncreators/actionsThunk';
+import { STATES } from 'mongoose';
 
 function CaruselRandom(props) {
-  const [data, setData] = useState([{ reviews: [], ingridients: [] }]);
+  const store = useSelector((state) => state.carousel);
+  const loading = useSelector((state) => state.isLoading);
+  const dispatch = useDispatch();
   useEffect(() => {
     async function test() {
-      let array = await carouselLoader();
-      setData(array);
+      dispatch(carouselLoader());
     }
     test();
   }, []);
- 
-  
-  
+
   useEffect(() => {
-    if (props.data)  console.log(props.data);
-  }, [])
+    if (props.data) console.log(props.data);
+  }, []);
 
   let settings = {
     dots: false,
@@ -32,33 +33,44 @@ function CaruselRandom(props) {
 
   return (
     <>
-      <div className='carouselRandom-main'>
-        <h2 className='carouselTitle'>Mmmm.. yummy!</h2>
-        <Slider {...settings}>
-          {data.map((item) => {
-            const itemId = item._id ? item._id : 'error';
-            return (
-              <Link
-                to={{ pathname: `/recipes/${itemId}`, params: itemId }}
-                key={itemId}
-              >
-                <div className='carouselRandom-element'>
-                  <div className='carouselRandom-image'>
-                    <div className='shadow'>
-                      <img
-                        className='carousel-img'
-                        src={item.image}
-                        alt={item.title}
-                      />
+      {loading ? (
+        <div style={{ marginTop: 50 }}>
+          <center>
+            <img
+              src='https://i.ya-webdesign.com/images/loading-png-gif.gif'
+              width='30px'
+            />
+          </center>
+        </div>
+      ) : (
+        <div className='carouselRandom-main'>
+          <h2 className='carouselTitle'>Mmmm.. yummy!</h2>
+          <Slider {...settings}>
+            {store.map((item) => {
+              const itemId = item._id ? item._id : 'error';
+              return (
+                <Link
+                  to={{ pathname: `/recipes/${itemId}`, params: itemId }}
+                  key={itemId}
+                >
+                  <div className='carouselRandom-element'>
+                    <div className='carouselRandom-image'>
+                      <div className='shadow'>
+                        <img
+                          className='carousel-img'
+                          src={item.image}
+                          alt={item.title}
+                        />
+                      </div>
                     </div>
+                    <div className='carousel-title'>{item.title}</div>
                   </div>
-                  <div className='carousel-title'>{item.title}</div>
-                </div>
-              </Link>
-            );
-          })}
-        </Slider>
-      </div>
+                </Link>
+              );
+            })}
+          </Slider>
+        </div>
+      )}
     </>
   );
 }

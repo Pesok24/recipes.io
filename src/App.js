@@ -42,7 +42,7 @@ function App() {
       }
     }
     question();
-    dispatch(loadSaga());
+    //  dispatch(loadSaga());
   }, []);
 
   return (
@@ -66,8 +66,8 @@ function App() {
           <Footer />
         </Route>
         <Route path='/profile'>
-          <Logo/>
-          <Profile/>
+          <Logo />
+          <Profile />
           <Footer />
         </Route>
       </BrowserRouter>
