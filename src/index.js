@@ -8,7 +8,10 @@ import './index.scss';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import ErrorBoundary from './component/ErrorBoundary';
 import thunk from 'redux-thunk';
-const enhancers = compose(applyMiddleware(thunk), window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+const enhancers = compose(
+  applyMiddleware(thunk),
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+);
 // Пример saga.
 
 /* const sagaMiddleware = createSagaMiddleware();
