@@ -107,12 +107,14 @@ const reducer = (state = defaultState, action) => {
         ...state,
         isLoading: true,
         carousel: [{ reviews: [], ingridients: [] }],
+
         errorMessage: null,
       };
     case 'loadingSuccess':
       return {
         ...state,
         carousel: action.url,
+        mainrecipe: action.url[16],
         isLoading: false,
         errorMessage: null,
       };

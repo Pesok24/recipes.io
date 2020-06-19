@@ -37,8 +37,8 @@ function CaruselRandom(props) {
         <div style={{ marginTop: 50 }}>
           <center>
             <img
-              src='https://i.ya-webdesign.com/images/loading-png-gif.gif'
-              width='30px'
+              src='https://mir-s3-cdn-cf.behance.net/project_modules/disp/35771931234507.564a1d2403b3a.gif'
+              width='70px'
             />
           </center>
         </div>
