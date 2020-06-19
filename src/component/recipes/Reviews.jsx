@@ -41,22 +41,22 @@ const Reviews = (props) => {
   return (
     <>
       <div id='recipesHover'>
-        <ListGroup.Item>
+        
           <b>Reviews:</b>
-        </ListGroup.Item>
+        
         <div id='reviewsList'>
-          <ListGroup id='reviewListGroup'>
+        
             {reviewSelector.map((e) => {
               let userName = e.author.name;
               console.log(e);
               return (
-                <ListGroup.Item>
+                <div>
                   <b>{userName}: </b>
                   {e.text}
-                </ListGroup.Item>
+                </div>
               );
             })}
-          </ListGroup>
+         
         </div>
         <Example params={props.params} />
       </div>

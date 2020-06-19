@@ -2,108 +2,114 @@ import React, { useState, useEffect } from 'react';
 
 import { Button, Modal, Form } from 'react-bootstrap';
 
-import { useSelector  } from 'react-redux';
+import { useSelector } from 'react-redux';
 function NewRecipe(props) {
+  const user = useSelector((state) => state.user);
+  const [show, setShow] = useState(false);
+  const [name, setName] = useState('');
 
-    const user = useSelector(state => state.user)
-    const [show, setShow] = useState(false);
-    const [name, setName] = useState('');
+  //добавление ингредиентов
+  const [ingridients, setIngridient] = useState('');
+  const [autor, setAutor] = useState('');
+  const [image, setImage] = useState('');
+  //название блюда
+  const [title, setTitle] = useState('');
+  const [recipe, setRecipe] = useState('');
 
-    //добавление ингредиентов
-    const [ingridients,setIngridient] = useState('');
-    const [autor,setAutor] = useState('');
-    const [image,setImage] = useState('');
-    //название блюда
-    const [title,setTitle] = useState('');
-    const [recipe,setRecipe] = useState('');
+  // const [newRecipe,addRecipe] = useState({
+  //     title: '',
+  //       author: '',
+  //       date: '',
+  //       image:'',
+  //       ingridients: '',
+  //       recipe: ''
+  // })
 
-    // const [newRecipe,addRecipe] = useState({
-    //     title: '',
-    //       author: '',
-    //       date: '',
-    //       image:'',
-    //       ingridients: '',
-    //       recipe: ''
-    // })
+  const getRecipe = (event) => {
+    setRecipe(event.target.value);
+  };
 
-   const  getRecipe = (event) => {
-       setRecipe(event.target.value)
-   };
+  const getIng = (event) => {
+    const title = event.target.value;
+    const arrTitle = title.split(' ');
 
-        const getIng = (event)=> {
-            const title = event.target.value;
-            const arrTitle = title.split(' ');
+    setIngridient(arrTitle);
+  };
 
-            setIngridient(arrTitle)
+  const getTitle = (event) => {
+    setTitle(event.target.value);
+  };
+  const getImg = (event) => {
+    setImage(event.target.value);
+  };
+  console.log(image);
 
-        };
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
-    const getTitle = (event) => {
-        setTitle(event.target.value)
+  const handlGetRecipe = () => {
+    handleClose();
 
-    }
-    const getImg = (event) => {
-        setImage(event.target.value)
-    }
-    console.log(image);
-
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
-
-
-
-    const handlGetRecipe = () => {
-
-        handleClose()
-
-        const postRecipe = async () => {
-            const response = await fetch("/addnew", {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ title: name, author: user.name,ingridients: ingridients,recipe:recipe })
-            });
-            const result = await response.json()
-            return result
-        }
-        postRecipe()
-
+    const postRecipe = async () => {
+      const response = await fetch('/addnew', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          title: name,
+          author: user.name,
+          ingridients: ingridients,
+          recipe: recipe,
+        }),
+      });
+      const result = await response.json();
+      return result;
     };
+    postRecipe();
+  };
 
+  return (
+    <>
+      <Button className='button' variant='primary' onClick={handleShow}>
+        Add recipe
+      </Button>
 
-    return (
-        <>
-            <Button className='button' variant="primary" onClick={handleShow}>
-                Добавить рецепт
-            </Button>
-
-            <Modal size="sm" show={show} onHide={handleClose}>
-                <Modal.Header closeButton>
-                    <Modal.Title>Добавте рецепт</Modal.Title>
-                </Modal.Header>
-                {/*<Modal.Body><Form.Control <input onChange={(ev) => setName(ev.target.value)} rows="3" id='reviewTextArea'/> /></Modal.Body>*/}
-                <Modal.Body>
-                    <input type="text" name="title" placeholder="Блюдо" onChange={getTitle}/>
-                    <input type="file"  name="image" placeholder="Добавить фото" onChange={getImg}/>
-                    <figure>
-                        <figcaption>Введите через пробел </figcaption>
-                        <textarea  placeholder="Что для этого нужно"  onChange={getIng}/>
-                    </figure>
-                    <textarea placeholder="рецепт" onChange={getRecipe}/>
-
-                </Modal.Body>
-                <Modal.Footer>
-                    <Button variant="secondary" onClick={handleClose}>
-                        Закрыть
-                    </Button>
-                    <Button variant="primary" onClick={handlGetRecipe}>
-                        Отправить
-                    </Button>
-                </Modal.Footer>
-            </Modal>
-        </>
-    );
+      <Modal size='sm' show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Add your recipe</Modal.Title>
+        </Modal.Header>
+        {/*<Modal.Body><Form.Control <input onChange={(ev) => setName(ev.target.value)} rows="3" id='reviewTextArea'/> /></Modal.Body>*/}
+        <Modal.Body>
+          <input
+            type='text'
+            name='title'
+            placeholder='Title'
+            onChange={getTitle}
+          />
+          <input
+            type='file'
+            name='image'
+            placeholder='Photo'
+            onChange={getImg}
+          />
+          <figure>
+            <figcaption>Use backspace to slice </figcaption>
+            <textarea placeholder='What we need for that' onChange={getIng} />
+          </figure>
+          <textarea placeholder='Recipe' onChange={getRecipe} />
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant='secondary' onClick={handleClose}>
+            Close
+          </Button>
+          <Button variant='primary' onClick={handlGetRecipe}>
+            Send
+          </Button>
+        </Modal.Footer>
+      </Modal>
+    </>
+  );
 }
 
 export default NewRecipe;

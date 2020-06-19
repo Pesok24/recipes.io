@@ -17,33 +17,30 @@ const Steps = (props) => {
   //   };
   //   getFetch();
   // }, []);
-  const recipeState = useSelector(state => state.steps)
+  const recipeState = useSelector((state) => state.steps);
   console.log(recipeState);
-  
 
   //   useEffect(() => {
 
   // }, []);
 
+  const steps = recipeState[0].steps[0].step[0].steps;
 
+  let i = 0;
 
- const steps = recipeState[0].steps[0].step[0].steps
-
-  let i = 0
-
-  return ( 
-    <div className='ingredients'>
-      <ListGroup>
-  <ListGroup.Item><b>Steps:</b></ListGroup.Item>
+  return (
+    <div className="steps">
+      <b>Steps:</b>
       {steps.map((e) => {
-        i++
+        i++;
         return (
-        <ListGroup.Item><b>{i}.</b> {e.step}</ListGroup.Item>
-        )
+          <div>
+            <b>{i}.</b> {e.step}
+          </div>
+        );
       })}
-      </ListGroup>
     </div>
-   );
-}
- 
+  );
+};
+
 export default Steps;

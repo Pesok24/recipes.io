@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import { Modal, Button } from 'react-bootstrap' 
+import { Modal, Button } from 'react-bootstrap';
 import CropForm from '../ImageUpload';
 import { useSelector, useDispatch } from 'react-redux';
 
 // const PhotoModal = () => {
-//   return ( 
+//   return (
 //     <Modal.Dialog>
 //   <Modal.Header closeButton>
 //     <Modal.Title>Modal title</Modal.Title>
@@ -22,36 +22,35 @@ import { useSelector, useDispatch } from 'react-redux';
 // </Modal.Dialog>
 //    );
 // }
- 
+
 // export default PhotoModal;
 
-
-function PhotoModal (props) {
+function PhotoModal(props) {
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-
   // const user = useSelector(state => state.user)
   // const reviewSelector = useSelector(state => state.reviews)
   // const dispatch = useDispatch()
 
-
   return (
     <>
-      <Button className='button' variant="primary" onClick={handleShow}>
-        Загрузить фото:
+      <Button className='button' variant='primary' onClick={handleShow}>
+        Change photo
       </Button>
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Выберите фото:</Modal.Title>
+          <Modal.Title>Make a choise:</Modal.Title>
         </Modal.Header>
-        <Modal.Body><CropForm /></Modal.Body>
+        <Modal.Body>
+          <CropForm />
+        </Modal.Body>
         <Modal.Footer>
-          <Button variant="primary" onClick={handleClose}>
-            Закрыть
+          <Button variant='primary' onClick={handleClose}>
+            Close
           </Button>
           {/* <Button variant="primary" onClick={() => {
             handleClose()
@@ -64,4 +63,4 @@ function PhotoModal (props) {
   );
 }
 
-export default PhotoModal
+export default PhotoModal;

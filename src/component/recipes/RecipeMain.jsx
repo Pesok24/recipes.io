@@ -1,8 +1,8 @@
-import React from "react";
-import { useState } from "react";
-import { useEffect } from "react";
-import doFetch from "../../fetchFunc";
-import { ListGroup } from 'react-bootstrap' 
+import React from 'react';
+import { useState } from 'react';
+import { useEffect } from 'react';
+import doFetch from '../../fetchFunc';
+import { ListGroup } from 'react-bootstrap';
 const Recipe = (props) => {
   // const [recipesMain, setRecipesMain] = useState('');
 
@@ -16,15 +16,12 @@ const Recipe = (props) => {
   // }, []);
 
   return (
-  <div id='recipeList'>
-    <ListGroup>
-  <ListGroup.Item><b>Recipe:</b></ListGroup.Item>
-
-  <ListGroup.Item className="recipeListDiv">{props.data.recipe}</ListGroup.Item>
-
-    </ListGroup>
-  </div>
-  )
+    <div id='recipeList'>
+      <b>Recipe:</b>
+      <br />
+      {props.data.recipe}
+    </div>
+  );
 };
 
 export default Recipe;

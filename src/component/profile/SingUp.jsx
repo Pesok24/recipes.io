@@ -34,7 +34,7 @@ export default function SingUp(props) {
 
       history.push('/');
     } else {
-      setMess(`${result.error} , Уже Занян`);
+      setMess(`${result.error} , Уже Занят`);
     }
   }
 

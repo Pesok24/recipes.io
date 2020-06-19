@@ -9,9 +9,8 @@ const apiKey = '0b6291b8eb0e48d595c1f6ef3cc36eb0';
 
 //Отрисовывает все рецепты
 router.get('/all', async (req, res) => {
-
-  const recipes = await Recipe.find({});
-
+  const allRecipes = await Recipe.find({});
+  const recipes = allRecipes.splice(0, 50);
 
   res.json(recipes);
 });
@@ -45,13 +44,11 @@ router.post('/apisearch', async (req, res) => {
         'x-rapidapi-key': 'dd1bc0357dmsh0ba4599a6c83c49p189e69jsne4d3cdbfe506',
       },
     }
-
   );
   const result = await response.json();
   const feed = result.feed;
   // console.log(result);
-    let array = [];
-
+  let array = [];
 
   for (let i = 0; i < feed.length; i++) {
     const recipe = new Recipe({
@@ -64,13 +61,11 @@ router.post('/apisearch', async (req, res) => {
     await recipe.save();
   }
 
-  
-  const recipes = await Recipe.find().sort({ _id: -1 }).limit(10)
+  const recipes = await Recipe.find().sort({ _id: -1 }).limit(10);
   // console.log(recipes);
-  
-  res.json(recipes)
-})
 
+  res.json(recipes);
+});
 
 //ручка для перехода по рецептам
 router.post('/link', async (req, res) => {
@@ -231,13 +226,18 @@ router.post('/getreview', async (req, res) => {
 
 router.post('/renderreview', async (req, res) => {
   const data = req.body;
-  // console.log(data);
-  const reviews = await Reviews.find({ author: data.userId }).populate(
-    'recipe'
-  );
+  console.log('ДАТА', data);
+  try {
+    const reviews = await Reviews.find({ author: data.userId }).populate(
+      'recipe'
+    );
 
-  // console.log(reviews);
-  res.json(reviews);
+    console.log(reviews);
+    // console.log(reviews);
+    res.json(reviews);
+  } catch (e) {
+    console.log('Ошибка, ', e);
+  }
 });
 
 router.post('/likecarousel', async (req, res) => {

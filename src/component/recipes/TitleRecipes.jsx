@@ -10,37 +10,29 @@ import Steps from './Steps';
 const TitleRecipes = (props) => {
   return (
     <>
-      <Container>
-        <Row>
-          <Col>
+      <div class='container'>
+        <div class='row'>
+          <div class='col-sm'>
             <h3>{props.data.title}</h3>
-          </Col>
-          <Col xs={6} md={4}>
-            <Image
-              src={props.data.image}
-              width='400px'
-              height='300px'
-              rounded
-            />
-          </Col>
-        </Row>
-        <Row>
-          <Col>
+            <img src={props.data.image} />
+            <hr />
             <Reviews data={props.data} params={props.params} />
-          </Col>
-          <Col>
+          </div>
+          <div class='col-sm'></div>
+          <div class='col-sm'>
             <Ingredients data={props.data} />
-          </Col>
-        </Row>
-        <Col>
-          <Recipe data={props.data} />
-        </Col>
-        <Col>
-          <Steps data={props.data} />
-        </Col>
-        <Likes />
-        <Tostatus />
-      </Container>
+            <hr />
+            <div className='social'>
+              <Likes />
+              <Tostatus />
+            </div>
+            <hr />
+          </div>
+        </div>
+
+        <hr />
+        <Steps data={props.data} />
+      </div>
     </>
   );
 };

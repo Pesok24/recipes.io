@@ -52,10 +52,10 @@ function InputStatus(props) {
         </Modal.Body>
         <Modal.Footer>
           <Button variant='secondary' onClick={handleClose}>
-            Закрыть
+            Close
           </Button>
           <Button variant='primary' onClick={handleChangeName}>
-            Отправить
+            Send
           </Button>
         </Modal.Footer>
       </Modal>

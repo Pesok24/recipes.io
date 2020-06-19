@@ -38,7 +38,7 @@ function Tostatus() {
   return (
     <>
       {' '}
-      <button onClick={(getRecipes, notify)}>Start to cook</button>
+      <button onClick={(getRecipes(), notify)}>Start to cook</button>
       <ToastContainer
         position='top-right'
         autoClose={5000}

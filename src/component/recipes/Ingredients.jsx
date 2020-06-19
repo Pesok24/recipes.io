@@ -4,7 +4,6 @@ import { useEffect } from 'react';
 import { ListGroup } from 'react-bootstrap';
 
 const Ingredients = (props) => {
-
   // const [ingerd, setIngerd] = useState([])
 
   // useEffect(() => {
@@ -16,25 +15,23 @@ const Ingredients = (props) => {
   //   getFetch();
   // }, []);
 
-  
- 
-  const ingerd = props.data.ingridients
+  const ingerd = props.data.ingridients;
 
-  let i = 0
+  let i = 0;
 
-  return ( 
-    <div id='ingredients'>
-      <ListGroup>
-        <ListGroup.Item><b>Ingredients:</b></ListGroup.Item>
+  return (
+    <div className='ingridients'>
+      <b>Ingredients:</b>
       {ingerd.map((e) => {
-        i++
+        i++;
         return (
-        <ListGroup.Item><b>{i}.</b> {e.name}</ListGroup.Item>
-        )
+          <div>
+            <b>{i}.</b> {e.name}
+          </div>
+        );
       })}
-      </ListGroup>
     </div>
-   );
-}
- 
+  );
+};
+
 export default Ingredients;

@@ -17,7 +17,8 @@ function Profile() {
   const data = carouselLoader[Math.ceil(Math.random() * carouselLoader.length)];
   const [text, setText] = useState('');
   const [show, setShow] = useState(false);
-  const [review, setReview] = useState([]);
+  const [review, setReview] = useState({ recipe: { _id: '' } });
+  const [time, setTime] = useState(false);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -25,24 +26,28 @@ function Profile() {
   const changeNameHandler = () => {};
 
   useEffect(() => {
+    const getreviews = async () => {
+      try {
+        console.log('с ЮЗЭФЕКТА', user.id);
+        const response = await fetch('/recipe/renderreview', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ userId: user.id }),
+        });
+        let result = await response.json();
+        setReview(result);
+        console.log('Это результат', result);
+        console.log('this is response', response);
+      } catch (e) {
+        console.log('ошибка');
+      }
+    };
     getreviews();
   }, [user.id]);
 
-  async function getreviews() {
-    const response = await fetch('recipe/renderreview', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        userId: user.id,
-      }),
-    });
-    let result = await response.json();
-    console.log(result);
-    setReview(result);
-  }
-  console.log(review);
+  console.log('State profile', review);
   async function postgoodreview() {
     const response = await fetch('recipe/getreview', {
       method: 'POST',
@@ -75,7 +80,7 @@ function Profile() {
     });
     await console.log(response.json());
   }
-
+  console.log(review, 'revvvvvvvvvv');
   return (
     <>
       <div className='MainPage'>
@@ -103,35 +108,33 @@ function Profile() {
             </div>
           </div>
           <div className='previousDish'>
-            <h3>What about</h3>
+            <h3>
+              What about{' '}
+              <Link
+                to={{
+                  pathname: `/recipes/${status.id}`,
+                }}
+              >
+                {status.status}
+              </Link>
+            </h3>
+
             <div className='previousDish__body'>
               <div className='previousDish__reviewBlock'>
                 <div className='previousDish__preview'>
                   <img className='previousDish__img' />
                   <div className='previousDish__title__like'>
-                    <h4 className='previousDish__title'>
-                      {' '}
-                      <Link
-                        to={{
-                          pathname: `/recipes/${status.id}`,
-                        }}
-                      >
-                        {status.status}
-                      </Link>
-                    </h4>
+                    <h4 className='previousDish__title'> </h4>
                     <div className='previousDish__buttons'>
-                      <button
-                        className='previousDish__like button'
+                      <div
+                        className='rev-like'
                         onClick={() => postgoodreview()}
                       >
                         🙂
-                      </button>
-                      <button
-                        className='previousDish__dislike button'
-                        onClick={() => postbadreview()}
-                      >
+                      </div>
+                      <div className='rev-like' onClick={() => postbadreview()}>
                         😥
-                      </button>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -142,18 +145,21 @@ function Profile() {
               <div className='previousDish__history'></div>
               <ul>
                 {review.length !== 0 ? (
-                  review.map((el) => (
-                    <li>
-                      {el.flag}{' '}
-                      <Link
-                        to={{
-                          pathname: `/recipes/${el.recipe._id}`,
-                        }}
-                      >
-                        {el.recipe.title}
-                      </Link>
-                    </li>
-                  ))
+                  review.map((el, i) => {
+                    console.log(typeof el);
+                    return (
+                      <li key={i}>
+                        {el.flag}{' '}
+                        <Link
+                          to={{
+                            pathname: `/recipes/${el.recipe._id}`,
+                          }}
+                        >
+                          {el.recipe.title}
+                        </Link>
+                      </li>
+                    );
+                  })
                 ) : (
                   <li>Let try your first recipe</li>
                 )}
@@ -161,15 +167,9 @@ function Profile() {
             </div>
           </div>
           <div className='youdlike'> </div>
-        <LikeCarousel />
+          <LikeCarousel />
         </div>
       </div>
-      {/* <div>
-        <div className='userImage'>
-          <img src={user.image} alt='Фото профиля' />
-        </div>
-
-      </div> */}
     </>
   );
 }
